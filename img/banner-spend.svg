@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" role="img" aria-label="Budget bar chart">
+  <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07302f"/><stop offset="1" stop-color="#0e8f7a"/></linearGradient></defs>
+  <rect width="400" height="160" fill="url(#b)"/>
+  <g stroke="#ffffff22"><path d="M30 40 H370 M30 80 H370 M30 120 H370"/></g>
+  <g fill="#e6fff7">
+    <rect x="54" width="38" rx="6" y="90" height="30"><animate attributeName="height" values="30;62;30" dur="4s" repeatCount="indefinite"/><animate attributeName="y" values="90;58;90" dur="4s" repeatCount="indefinite"/></rect>
+    <rect x="120" width="38" rx="6" y="70" height="50"><animate attributeName="height" values="50;76;50" dur="4.6s" repeatCount="indefinite"/><animate attributeName="y" values="70;44;70" dur="4.6s" repeatCount="indefinite"/></rect>
+    <rect x="186" width="38" rx="6" y="56" height="64"><animate attributeName="height" values="64;40;64" dur="3.8s" repeatCount="indefinite"/><animate attributeName="y" values="56;80;56" dur="3.8s" repeatCount="indefinite"/></rect>
+    <rect x="252" width="38" rx="6" y="42" height="78"><animate attributeName="height" values="78;96;78" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="42;24;42" dur="5s" repeatCount="indefinite"/></rect>
+  </g>
+  <path d="M60 100 L140 76 L206 62 L272 40 L340 24" stroke="#ffd166" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400"><animate attributeName="stroke-dashoffset" values="400;0" dur="2.4s" fill="freeze"/></path>
+  <g transform="translate(330 70)"><circle r="26" fill="#fff" opacity=".95"/><path d="M-9 -4 l9 -9 l9 9 M0 -13 V12" stroke="#0e8f7a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180)"/><text y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="11" fill="#fff">approved</text></g>
+</svg>

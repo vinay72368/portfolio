@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: shop
+
+cds:
+  odata-v4:
+    endpoint:
+      path: /odata/v4
+
+---
+# Local development: in-memory H2 and mocked users. Try customer / secret (browse and order) or admin / secret (full access).
+spring:
+  config:
+    activate:
+      on-profile: default
+cds:
+  security:
+    mock:
+      users:
+        - name: admin
+          password: secret
+          roles:
+            - Admin
+        - name: customer
+          password: secret
+          roles:
+            - Customer
+
+---
+# SAP BTP (Cloud Foundry): HANA Cloud and XSUAA come from the bound service instances.
+spring:
+  config:
+    activate:
+      on-profile: cloud
+cds:
+  security:
+    xsuaa:
+      enabled: true

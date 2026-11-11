@@ -1,0 +1,29 @@
+<mvc:View
+	controllerName="demo.shop.ui.controller.Orders"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page title="{i18n>myOrders}" showNavButton="true" navButtonPress=".onBack">
+		<content>
+			<Table id="ordersTable"
+				items="{ path: '/Orders', parameters: { $orderby: 'orderedOn desc', $expand: 'customer' } }"
+				noDataText="{i18n>noOrders}">
+				<columns>
+					<Column><Text text="{i18n>order}" /></Column>
+					<Column><Text text="{i18n>customer}" /></Column>
+					<Column><Text text="{i18n>status}" /></Column>
+					<Column hAlign="End"><Text text="{i18n>total}" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press=".onSelect">
+						<cells>
+							<ObjectIdentifier title="{orderNo}" text="{orderedOn}" />
+							<ObjectIdentifier title="{customer/name}" text="{customer/city}" />
+							<ObjectStatus text="{status}" state="{path: 'status', formatter: '.formatStatus'}" />
+							<ObjectNumber number="{total}" unit="USD" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

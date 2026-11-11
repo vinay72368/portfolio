@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>checkout}" contentWidth="30rem">
+		<VBox class="sapUiSmallMargin">
+			<Label text="{i18n>customer}" labelFor="customer" />
+			<Select id="customer" width="100%" items="{ path: '/Customers', parameters: { $orderby: 'name' } }">
+				<core:Item key="{ID}" text="{name} ({city})" />
+			</Select>
+		</VBox>
+		<List items="{cart>/lines}" headerText="{i18n>yourBasket}">
+			<StandardListItem title="{cart>name}" description="{cart>quantity} x {cart>price} USD" info="{cart>lineTotal} USD" icon="sap-icon://product" />
+		</List>
+		<VBox class="sapUiSmallMargin">
+			<Text text="{i18n>subtotal}: {cart>/subtotal} USD" />
+			<Text visible="{= ${cart>/discountPercent} > 0 }" text="{i18n>discount} ({cart>/discountPercent}%): -{cart>/discount} USD" />
+			<ObjectNumber number="{cart>/total}" unit="USD" emphasized="true" />
+		</VBox>
+		<beginButton><Button text="{i18n>placeOrder}" type="Emphasized" press=".onPlaceOrder" /></beginButton>
+		<endButton><Button text="{i18n>cancel}" press=".onCancelCheckout" /></endButton>
+	</Dialog>
+</core:FragmentDefinition>

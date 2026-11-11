@@ -1,0 +1,6 @@
+target/
+node_modules/
+gen/
+srv/src/gen/
+srv/src/main/resources/schema-h2.sql
+*.mtar

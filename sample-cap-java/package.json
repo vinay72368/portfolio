@@ -1,0 +1,11 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "Sample SAP CAP Java project: a small e-commerce shop with a UI5 front end",
+  "dependencies": {
+    "@sap/cds": "^8"
+  },
+  "scripts": {
+    "watch": "cds watch"
+  }
+}

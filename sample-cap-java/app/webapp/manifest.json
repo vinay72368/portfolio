@@ -1,0 +1,64 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "demo.shop.ui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/shop/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": { "desktop": true, "tablet": true, "phone": true }
+  },
+  "sap.ui5": {
+    "rootView": { "viewName": "demo.shop.ui.view.App", "type": "XML", "id": "app", "async": true },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": { "sap.m": {}, "sap.ui.core": {} }
+    },
+    "contentDensities": { "compact": true, "cozy": true },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": { "bundleName": "demo.shop.ui.i18n.i18n" }
+      },
+      "": {
+        "dataSource": "mainService",
+        "settings": { "operationMode": "Server", "autoExpandSelect": true, "earlyRequests": true }
+      }
+    },
+    "resources": { "css": [{ "uri": "css/style.css" }] },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "demo.shop.ui.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        { "name": "products", "pattern": "", "target": "products" },
+        { "name": "orders", "pattern": "orders", "target": "orders" },
+        { "name": "orderDetail", "pattern": "order/{orderId}", "target": "orderDetail" },
+        { "name": "sales", "pattern": "sales", "target": "sales" }
+      ],
+      "targets": {
+        "products": { "name": "Products", "id": "products" },
+        "orders": { "name": "Orders", "id": "orders" },
+        "orderDetail": { "name": "OrderDetail", "id": "orderDetail" },
+        "sales": { "name": "Sales", "id": "sales" }
+      }
+    }
+  }
+}

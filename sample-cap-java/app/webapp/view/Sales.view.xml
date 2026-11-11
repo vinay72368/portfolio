@@ -1,0 +1,24 @@
+<mvc:View
+	controllerName="demo.shop.ui.controller.Sales"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page title="{i18n>sales}" showNavButton="true" navButtonPress=".onBack">
+		<content>
+			<MessageStrip text="{sales>/error}" type="Error" showIcon="true" visible="{= !!${sales>/error} }" class="sapUiSmallMargin" />
+			<HBox wrap="Wrap" class="sapUiSmallMargin" visible="{= !${sales>/error} }">
+				<GenericTile header="{i18n>orders}" class="sapUiTinyMargin">
+					<TileContent><NumericContent value="{sales>/summary/orders}" withMargin="false" /></TileContent>
+				</GenericTile>
+				<GenericTile header="{i18n>revenue}" subheader="USD" class="sapUiTinyMargin">
+					<TileContent><NumericContent value="{sales>/summary/revenue}" withMargin="false" /></TileContent>
+				</GenericTile>
+				<GenericTile header="{i18n>averageOrder}" subheader="USD" class="sapUiTinyMargin">
+					<TileContent><NumericContent value="{sales>/summary/averageOrder}" withMargin="false" /></TileContent>
+				</GenericTile>
+			</HBox>
+			<List headerText="{i18n>topProducts}" items="{sales>/top}" visible="{= !${sales>/error} }" class="sapUiSmallMargin">
+				<StandardListItem title="{sales>name}" info="{sales>unitsSold} {i18n>unitsSold}" icon="sap-icon://product" />
+			</List>
+		</content>
+	</Page>
+</mvc:View>

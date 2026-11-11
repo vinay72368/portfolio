@@ -1,0 +1,441 @@
+.hero .note { max-width: 680px; padding: 12px 16px; border-left: 3px solid var(--accent-2); background: var(--surface); border-radius: 0 10px 10px 0; color: var(--muted); font-size: .92rem; }
+.hero .note b { color: var(--text); }
+.hero .tags { margin: 16px 0; }
+.small { font-size: .85rem; }
+.btn.small { padding: 4px 12px; font-size: .85rem; }
+
+/* Request flow */
+.flow-bar { margin: 12px 0; }
+.flow { list-style: none; padding: 0; margin: 0 0 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; counter-reset: step; }
+.flow li { position: relative; }
+.flow button { all: unset; box-sizing: border-box; width: 100%; height: 100%; cursor: pointer; display: block; padding: 14px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border); transition: border-color .2s, transform .2s, box-shadow .2s; }
+.flow button::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 26px; height: 26px; margin-bottom: 8px; border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); font-weight: 700; font-size: .85rem; }
+.flow button b { display: block; }
+.flow button span { color: var(--muted); font-size: .82rem; }
+.flow button:hover { border-color: var(--accent); transform: translateY(-2px); }
+.flow button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.flow li.on button { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent), 0 8px 30px color-mix(in srgb, var(--accent) 22%, transparent); transform: translateY(-4px); }
+.flow li.on button::before { background: var(--accent); color: #fff; }
+.flow li.done button { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.flow li:not(:last-child)::after { content: "→"; position: absolute; right: -11px; top: 50%; translate: 0 -50%; z-index: 1; color: var(--muted); font-size: .9rem; pointer-events: none; }
+.flow li.done:not(:last-child)::after { color: var(--accent); }
+.flow-detail { min-height: 110px; }
+.flow-detail h4 { margin: 0 0 6px; }
+.flow-detail code { font-size: .85rem; background: color-mix(in srgb, var(--accent) 12%, transparent); padding: 1px 6px; border-radius: 6px; }
+
+/* Code browser */
+.explorer { display: grid; grid-template-columns: 270px 1fr; gap: 16px; align-items: start; }
+.tree { padding: 12px; font-size: .88rem; position: sticky; top: 76px; max-height: 78vh; overflow: auto; }
+.tree ul { list-style: none; margin: 0; padding-left: 14px; }
+.tree > ul { padding-left: 0; }
+.tree .dir { display: block; padding: 4px 6px; color: var(--muted); font-weight: 600; }
+.tree button { all: unset; box-sizing: border-box; display: block; width: 100%; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-family: ui-monospace, Consolas, monospace; font-size: .83rem; }
+.tree button:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.tree button.sel { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent); }
+.tree button:focus-visible { outline: 2px solid var(--accent); }
+.viewer { padding: 0; overflow: hidden; min-width: 0; }
+.viewer:hover { transform: none; }
+.viewer-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--border); font-family: ui-monospace, Consolas, monospace; font-size: .85rem; }
+.file-note { margin: 0; padding: 12px 16px; background: color-mix(in srgb, var(--accent-2) 10%, transparent); font-size: .92rem; }
+.code { margin: 0; padding: 14px 16px; overflow: auto; max-height: 560px; font: .82rem/1.6 ui-monospace, Consolas, "SFMono-Regular", monospace; tab-size: 4; counter-reset: ln; }
+.code code { display: block; white-space: pre; }
+.code .ln { display: inline-block; width: 2.6em; margin-right: 1em; text-align: right; color: var(--muted); opacity: .6; user-select: none; }
+.tk-c { color: #7a8aa6; font-style: italic; } .tk-s { color: #3fb97f; } .tk-k { color: var(--accent-2); font-weight: 600; } .tk-a { color: #e0a23a; } .tk-n { color: #e0705a; }
+:root[data-theme="light"] .tk-s { color: #12805a; } :root[data-theme="light"] .tk-a { color: #a86400; }
+
+/* Playground */
+.play { display: grid; grid-template-columns: 280px 1fr; gap: 16px; align-items: start; }
+.presets { padding: 10px; display: grid; gap: 6px; }
+.presets:hover, .req:hover { transform: none; }
+.presets button { all: unset; box-sizing: border-box; cursor: pointer; padding: 8px 10px; border-radius: 8px; border: 1px solid transparent; font-size: .86rem; }
+.presets button:hover, .presets button.sel { background: color-mix(in srgb, var(--accent) 14%, transparent); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+.presets button:focus-visible { outline: 2px solid var(--accent); }
+.presets b { display: block; }
+.presets span { color: var(--muted); font-size: .78rem; }
+.req { padding: 16px; min-width: 0; }
+.req-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin-bottom: 10px; }
+.req label { display: grid; gap: 4px; font-size: .8rem; color: var(--muted); }
+.req .grow { flex: 1 1 260px; }
+.req input, .req select, .req textarea { font: .88rem ui-monospace, Consolas, monospace; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; width: 100%; }
+.req select { width: auto; }
+.req input:focus, .req select:focus, .req textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.res-head { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.res-head .btn { margin-left: auto; }
+.badge { padding: 2px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem; background: var(--border); }
+.badge.ok { background: color-mix(in srgb, #19b97c 25%, transparent); color: #19b97c; }
+.badge.err { background: color-mix(in srgb, #e5484d 25%, transparent); color: #e5484d; }
+.res { min-height: 180px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+.res code.flash { animation: flash .5s; }
+@keyframes flash { from { background: color-mix(in srgb, var(--accent) 22%, transparent); } }
+
+@media (max-width: 860px) {
+  .explorer, .play { grid-template-columns: 1fr; }
+  .tree { position: static; max-height: 260px; }
+  .flow li::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .res code.flash { animation: none; } }
+
+/* ---------- UI5 app preview (Fiori / Horizon look, always light) ---------- */
+.uiapp { margin: 16px 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0, 0, 0, .18); background: #f5f6f7; color: #1d2d3e; }
+.uiapp .shell { position: relative; font: 14px/1.5 "72", "72full", Arial, Helvetica, sans-serif; min-height: 420px; }
+.uiapp .shell-bar { display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: #fff; border-bottom: 1px solid #d9d9d9; }
+.uiapp .sdot { width: 12px; height: 12px; border-radius: 3px; background: linear-gradient(135deg, #0a6ed1, #5b3fd6); }
+.uiapp .grow { flex: 1; }
+.uiapp label { font-size: 12px; color: #556b82; display: inline-flex; gap: 6px; align-items: center; }
+.uiapp select, .uiapp input { font: inherit; padding: 5px 8px; border: 1px solid #89919a; border-radius: 8px; background: #fff; color: #1d2d3e; }
+.uiapp select:focus, .uiapp input:focus, .uiapp .ui-btn:focus-visible, .uiapp tr:focus-visible { outline: 2px solid #0a6ed1; outline-offset: 1px; }
+.uiapp .ui-page { padding: 16px; display: grid; gap: 14px; }
+.uiapp .toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.uiapp h4 { margin: 0; font-size: 16px; } .uiapp h4 small { color: #6a7686; font-weight: 400; }
+.uiapp .ui-btn { all: unset; box-sizing: border-box; cursor: pointer; padding: 5px 14px; border-radius: 8px; border: 1px solid #bcc3ca; background: #fff; color: #0a6ed1; font-weight: 600; }
+.uiapp .ui-btn:hover { background: #eaf1f9; }
+.uiapp .ui-btn.on, .uiapp .ui-btn.emph { background: #0a6ed1; border-color: #0a6ed1; color: #fff; }
+.uiapp .ui-btn.emph:hover { background: #0854a0; }
+.uiapp .ui-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px #e5e5e5; }
+.uiapp th { text-align: left; font-size: 12px; color: #556b82; padding: 10px 12px; border-bottom: 1px solid #d9d9d9; font-weight: 600; }
+.uiapp td { padding: 10px 12px; border-bottom: 1px solid #ededed; }
+.uiapp .r { text-align: right; } .uiapp .nav { color: #6a7686; text-align: right; width: 24px; }
+.uiapp tr[data-act=open] { cursor: pointer; } .uiapp tr[data-act=open]:hover td { background: #f1f6fb; }
+.uiapp .empty { text-align: center; color: #6a7686; padding: 24px; }
+.uiapp .chip { display: inline-block; padding: 1px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: #eee; color: #444; }
+.uiapp .chip.ok { background: #e1f4e8; color: #107e3e; } .uiapp .chip.warn { background: #fdf0d9; color: #a35c00; } .uiapp .chip.err { background: #fde3e4; color: #bb0000; }
+.uiapp .obj { display: flex; justify-content: space-between; gap: 16px; background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 0 0 1px #e5e5e5; }
+.uiapp dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 8px 0 0; } .uiapp dt { color: #6a7686; } .uiapp dd { margin: 0; }
+.uiapp .big { font-size: 34px; font-weight: 300; color: #0a6ed1; white-space: nowrap; } .uiapp .big small { font-size: 13px; color: #6a7686; }
+.uiapp .panel { background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 0 0 1px #e5e5e5; }
+.uiapp .panel-h { font-weight: 700; margin-bottom: 10px; }
+.uiapp .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; } .uiapp .row.end { justify-content: flex-end; margin-top: 12px; }
+.uiapp .spark { display: block; width: 100%; max-width: 420px; margin-top: 10px; }
+.uiapp .strip { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-radius: 8px; font-weight: 600; }
+.uiapp .strip.error { background: #fde3e4; color: #bb0000; } .uiapp .strip.success { background: #e1f4e8; color: #107e3e; }
+.uiapp .strip button { all: unset; cursor: pointer; padding: 0 6px; }
+.uiapp .dlg-back { position: absolute; inset: 0; background: rgba(20, 30, 45, .45); display: grid; place-items: center; padding: 12px; }
+.uiapp .dlg { background: #fff; border-radius: 14px; padding: 18px; width: min(380px, 100%); display: grid; gap: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, .3); }
+.uiapp .dlg label { display: grid; gap: 4px; }
+.apilog { padding: 14px 16px; }
+.apilog:hover { transform: none; }
+.apilog ol { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; font-size: .85rem; max-height: 220px; overflow: auto; }
+.apilog li { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.apilog code { background: color-mix(in srgb, var(--accent) 10%, transparent); padding: 1px 6px; border-radius: 6px; word-break: break-all; }
+.apilog .badge { padding: 0 8px; font-size: .75rem; }
+@media (max-width: 640px) { .uiapp .ui-table { font-size: 13px; } .uiapp td, .uiapp th { padding: 8px 6px; } }
+
+/* Shop preview additions */
+.uiapp .shell-bar .tab { all: unset; cursor: pointer; padding: 4px 14px; border-radius: 8px; font-weight: 600; color: #556b82; }
+.uiapp .shell-bar .tab:hover { background: #eef2f7; }
+.uiapp .shell-bar .tab.on { background: #e3eefb; color: #0a6ed1; }
+.uiapp .shell-bar .tab:focus-visible { outline: 2px solid #0a6ed1; }
+.uiapp .pill { display: inline-block; min-width: 18px; padding: 0 6px; border-radius: 999px; background: #0a6ed1; color: #fff; font-size: 11px; text-align: center; margin-left: 4px; }
+.uiapp .shop-grid { display: grid; grid-template-columns: 1fr 280px; gap: 14px; align-items: start; }
+.uiapp .cart ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.uiapp .cart li { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; }
+.uiapp .cart .nm { font-weight: 600; }
+.uiapp .cart .lt { min-width: 52px; text-align: right; }
+.uiapp .qty { display: inline-flex; align-items: center; gap: 6px; }
+.uiapp .ui-btn.mini { padding: 0 8px; line-height: 22px; }
+.uiapp .ui-btn.wide { display: block; text-align: center; margin-top: 10px; }
+.uiapp .ui-btn.danger { color: #bb0000; }
+.uiapp .ui-btn[disabled] { opacity: .45; cursor: not-allowed; }
+.uiapp .sum { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; margin: 12px 0 4px; }
+.uiapp .sum dd { margin: 0; text-align: right; } .uiapp .sum .tot { font-weight: 700; font-size: 15px; border-top: 1px solid #e5e5e5; padding-top: 6px; }
+.uiapp .tier { margin: 4px 0 0; font-size: 12px; color: #107e3e; font-weight: 600; }
+.uiapp .mini-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-height: 140px; overflow: auto; }
+.uiapp .mini-list li { display: flex; justify-content: space-between; gap: 8px; }
+.uiapp .panel small, .uiapp h4 small { color: #6a7686; font-weight: 400; }
+.uiapp td small { color: #6a7686; }
+.uiapp .empty { color: #6a7686; }
+.uiapp .small { font-size: 12px; } .uiapp .muted { color: #6a7686; }
+@media (max-width: 760px) { .uiapp .shop-grid { grid-template-columns: 1fr; } }
+
+/* Sales tab */
+.uiapp .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.uiapp .kpis div { background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 0 0 1px #e5e5e5; }
+.uiapp .kpis b { display: block; font-size: 26px; font-weight: 400; color: #0a6ed1; }
+.uiapp .kpis span { color: #6a7686; font-size: 12px; }
+.uiapp .bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.uiapp .bars li { display: grid; grid-template-columns: minmax(120px, 1.2fr) 2fr auto; gap: 12px; align-items: center; }
+.uiapp .bar { height: 10px; border-radius: 6px; background: #e8edf3; overflow: hidden; }
+.uiapp .bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #0a6ed1, #5b3fd6); }
+
+/* The big panels must stay still under the cursor, and scroll areas must not trigger the browser's back gesture */
+#explore .card:hover, #try .card:hover, #ui .card:hover, #flow .card:hover { transform: none !important; box-shadow: none; }
+#explore .card::before, #try .card::before, #ui .card::before { display: none; }
+.code, .tree, .res, .apilog ol, .uiapp .mini-list { overscroll-behavior: contain; }
+.code, .res { scrollbar-width: thin; }
+
+/* ---------- UI preview: spacing pass (one scale: 4 / 8 / 12 / 16 / 20) ---------- */
+.uiapp .shell { min-height: 480px; }
+.uiapp .shell-bar { gap: 8px; min-height: 54px; padding: 8px 20px; }
+.uiapp .shell-bar b { margin-right: 12px; font-size: 15px; }
+.uiapp .shell-bar .tab { padding: 7px 14px; }
+.uiapp .ui-page { padding: 20px; gap: 16px; }
+.uiapp .toolbar { gap: 12px; min-height: 40px; margin-bottom: 4px; }
+.uiapp .toolbar h4 { font-size: 18px; }
+.uiapp .toolbar input[type=search] { width: 220px; padding: 8px 12px; }
+.uiapp .ui-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 14px; line-height: 1.2; white-space: nowrap; }
+.uiapp .ui-btn.mini { min-width: 30px; padding: 3px 9px; }
+.uiapp th { padding: 12px 16px; white-space: nowrap; }
+.uiapp td { padding: 14px 16px; vertical-align: middle; }
+.uiapp th:first-child, .uiapp td:first-child { padding-left: 20px; }
+.uiapp th:last-child, .uiapp td:last-child { padding-right: 20px; }
+.uiapp td small { display: block; margin-top: 2px; font-size: 12px; }
+.uiapp .actions { display: inline-flex; gap: 8px; align-items: center; }
+.uiapp .chip { min-width: 34px; padding: 2px 10px; text-align: center; }
+
+.uiapp .shop-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; }
+.uiapp .panel { padding: 18px 20px; }
+.uiapp .panel-h { margin-bottom: 14px; font-size: 15px; }
+.uiapp .cart { position: sticky; top: 12px; }
+.uiapp .cart ul { gap: 14px; }
+.uiapp .cart li { grid-template-columns: minmax(0, 1fr) auto 64px; gap: 12px; }
+.uiapp .cart .nm { line-height: 1.3; }
+.uiapp .qty { gap: 8px; }
+.uiapp .sum { gap: 0; margin: 16px 0 4px; }
+.uiapp .sum dt, .uiapp .sum dd { padding: 4px 0; }
+.uiapp .sum .tot { margin-top: 8px; padding-top: 12px; border-top: 1px solid #e0e4e9; }
+.uiapp .tier { margin: 8px 0 0; }
+.uiapp .ui-btn.wide { display: flex; width: 100%; margin-top: 16px; padding: 10px 14px; }
+.uiapp .cart .empty { margin: 0; padding: 8px 0; line-height: 1.5; }
+
+.uiapp .obj { padding: 18px 20px; gap: 20px; }
+.uiapp dl { gap: 4px 16px; margin: 12px 0 0; }
+.uiapp .kpis { gap: 16px; }
+.uiapp .kpis div { padding: 18px 20px; }
+.uiapp .bars li { gap: 16px; }
+.uiapp .strip { padding: 10px 16px; }
+.uiapp .dlg { gap: 14px; padding: 22px; }
+.uiapp .dlg h4 { margin-bottom: 4px; }
+.uiapp .row.end { gap: 8px; margin-top: 8px; }
+
+.apilog { padding: 18px 20px; }
+.apilog ol { gap: 8px; margin-top: 12px; }
+
+@media (max-width: 860px) {
+  .uiapp .shop-grid { grid-template-columns: 1fr; }
+  .uiapp .cart { position: static; }
+  .uiapp .ui-page { padding: 14px; }
+  .uiapp .toolbar input[type=search] { width: 100%; order: 3; }
+}
+
+/* ---------- Small screens: nothing may be cut off ---------- */
+.uiapp .shop-grid > *, .uiapp .ui-page > * { min-width: 0; }
+@media (max-width: 860px) {
+  .uiapp .ui-table { display: block; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+  .uiapp .shell-bar { flex-wrap: wrap; row-gap: 6px; }
+  .uiapp .shell-bar label { margin-left: auto; }
+  .uiapp .toolbar h4 { flex: 1 1 auto; }
+  .uiapp .dlg-back { align-items: start; overflow: auto; }
+}
+@media (max-width: 600px) {
+  .explorer { gap: 12px; }
+  .tree { max-height: 200px; }
+  .code { font-size: .78rem; max-height: 420px; }
+  .viewer-head { flex-wrap: wrap; }
+  .req-row > * { flex: 1 1 100%; }
+  .req-row .btn { width: 100%; }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .apilog code { word-break: break-all; }
+}
+@media (max-width: 380px) { .flow { grid-template-columns: 1fr; } }
+
+/* Phones: a tighter product table that fits without sideways scrolling (restock stays on larger screens) */
+@media (max-width: 600px) {
+  .uiapp th, .uiapp td { padding: 10px 8px; }
+  .uiapp th:first-child, .uiapp td:first-child { padding-left: 12px; }
+  .uiapp th:last-child, .uiapp td:last-child { padding-right: 10px; }
+  .uiapp .actions .ui-btn.mini { display: none; }
+  .uiapp .actions .ui-btn { padding: 6px 10px; }
+  .uiapp .ui-page { padding: 12px; }
+}
+
+.uiapp .hint { margin: 0; padding: 9px 20px; background: #eef4fb; color: #32506f; font-size: 13px; line-height: 1.45; border-bottom: 1px solid #dbe5f0; }
+.uiapp label { text-transform: uppercase; letter-spacing: .04em; font-size: 11px; }
+@media (max-width: 600px) {
+  .uiapp .hint { padding: 9px 14px; }
+}
+
+/* ---------- The shop preview is an app window with its own scrolling ---------- */
+.ui-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; margin-top: 12px; }
+.ui-layout .uiapp { margin: 0; }
+.ui-layout .apilog { position: sticky; top: 76px; margin: 0; max-height: min(720px, 80vh); overflow: auto; }
+.uiapp .shell { display: flex; flex-direction: column; height: min(720px, 80vh); min-height: 460px; }
+.uiapp .shell-bar, .uiapp .hint { flex: none; }
+.uiapp .ui-page { flex: 1; min-height: 0; overflow-y: auto; align-content: start; }
+.uiapp .strip { position: sticky; top: -6px; z-index: 4; box-shadow: 0 6px 16px rgba(0, 0, 0, .12); }
+@media (max-width: 1100px) {
+  .ui-layout { grid-template-columns: 1fr; }
+  .ui-layout .apilog { position: static; max-height: 240px; }
+}
+
+/* ---------- Try the API: one window, the list scrolls and the result stays in view ---------- */
+.play { height: min(680px, 84vh); align-items: stretch; }
+.play .presets { overflow-y: auto; max-height: 100%; overscroll-behavior: contain; }
+.play .req { overflow-y: auto; max-height: 100%; display: flex; flex-direction: column; overscroll-behavior: contain; }
+.play .req .res { flex: 1 0 180px; max-height: none; }
+@media (max-width: 860px) {
+  .play { height: auto; }
+  .play .req { order: -1; position: sticky; top: 70px; z-index: 5; max-height: 58vh; background: var(--surface); box-shadow: 0 10px 30px rgba(0, 0, 0, .2); }
+  .play .presets { max-height: 38vh; }
+}
+
+/* ---------- API calls: a docked bar at the bottom of the app window ---------- */
+.ui-layout { display: block; }
+.uiapp { container-type: inline-size; container-name: app; }
+.uiapp .shell-bar b, .uiapp .tab { white-space: nowrap; }
+.uiapp .apibar { flex: none; border-top: 1px solid #d9dee5; background: #fff; }
+.uiapp .apibar-h { all: unset; box-sizing: border-box; width: 100%; display: flex; align-items: center; gap: 12px; padding: 9px 20px; cursor: pointer; font-size: 12px; color: #32506f; }
+.uiapp .apibar-h:hover { background: #f3f6fa; }
+.uiapp .apibar-h:focus-visible { outline: 2px solid #0a6ed1; outline-offset: -2px; }
+.uiapp .apibar-h b { letter-spacing: .06em; }
+.uiapp .apibar-h .last { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.uiapp .apibar-h i { font-style: normal; color: #6a7686; }
+.uiapp .apibar code { background: #eef4fb; padding: 1px 6px; border-radius: 6px; font-size: 12px; }
+.uiapp .apibar ol { display: none; list-style: none; margin: 0; padding: 0 20px 12px; max-height: 150px; overflow: auto; overscroll-behavior: contain; gap: 6px; }
+.uiapp .apibar.open ol { display: grid; }
+.uiapp .apibar li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; }
+.uiapp .badge { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 11px; font-weight: 700; background: #e7ebf0; }
+.uiapp .badge.ok { background: #e1f4e8; color: #107e3e; } .uiapp .badge.err { background: #fde3e4; color: #bb0000; }
+@container app (max-width: 760px) {
+  .uiapp .shop-grid { grid-template-columns: 1fr; }
+  .uiapp .cart { position: static; }
+  .uiapp .ui-table { display: block; max-width: 100%; overflow-x: auto; }
+  .uiapp .toolbar input[type=search] { width: 100%; order: 3; }
+  .uiapp .hint, .uiapp .apibar-h { padding-left: 14px; padding-right: 14px; }
+}
+
+.play .presets, .play .req { margin: 0; height: 100%; box-sizing: border-box; align-self: stretch; }
+
+/* ---------- Project hero: copy on the left, the stack on the right ---------- */
+.p-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 32px; align-items: center; padding-top: 34px; }
+.p-hero > :not(.p-card):not(.p-copy) { max-width: none; }
+.p-copy .lead { max-width: 560px; }
+.p-copy .tags { margin: 14px 0; }
+.p-copy .fine { margin: 14px 0 0; max-width: 560px; color: var(--muted); font-size: .88rem; }
+.p-copy .fine b { color: var(--text); }
+.p-card { padding: 22px; }
+.p-card:hover { transform: none; }
+.p-card h4 { margin: 0 0 14px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.p-stack { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; counter-reset: layer; }
+.p-stack li { position: relative; display: grid; padding: 12px 14px 12px 50px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.p-stack li::before { counter-increment: layer; content: counter(layer); position: absolute; left: 14px; top: 50%; translate: 0 -50%; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: .8rem; font-weight: 700; }
+.p-stack li:not(:last-child)::after { content: ""; position: absolute; left: 26px; bottom: -11px; width: 2px; height: 11px; background: color-mix(in srgb, var(--accent) 45%, transparent); }
+.p-stack b { font-size: .98rem; }
+.p-stack span { color: var(--muted); font-size: .84rem; }
+.p-facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.p-facts li { text-align: center; padding: 10px 4px; border-radius: 10px; border: 1px solid var(--border); }
+.p-facts b { display: block; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
+.p-facts span { font-size: .75rem; color: var(--muted); }
+@media (max-width: 899px) { .p-hero { grid-template-columns: 1fr; text-align: left; } .p-hero .cta { justify-content: flex-start; } }
+
+/* ---------- The prompt above the app ---------- */
+.tour-strip { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; padding: 14px 18px;
+  border-radius: 14px; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); }
+.tour-strip b { color: var(--accent); }
+
+/* ---------- The guided tour inside the app ---------- */
+.uiapp .tour { position: absolute; inset: 0; z-index: 30; }
+.uiapp .tour-spot { position: absolute; display: none; border-radius: 10px; pointer-events: none; transition: left .25s, top .25s, width .25s, height .25s;
+  box-shadow: 0 0 0 3px #0a6ed1, 0 0 0 9999px rgba(12, 22, 42, .58); }
+.uiapp .tour-card { position: absolute; left: 50%; translate: -50% 0; width: min(380px, calc(100% - 24px)); padding: 16px 18px; border-radius: 14px; background: #fff; color: #1d2d3e;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35); }
+.uiapp .tour-n { font-size: 11px; letter-spacing: .08em; font-weight: 700; color: #0a6ed1; }
+.uiapp .tour-card h5 { margin: 4px 0 6px; font-size: 16px; }
+.uiapp .tour-card p { margin: 0 0 14px; font-size: 13.5px; line-height: 1.5; color: #3d4b5c; }
+.uiapp .tour-x { all: unset; position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; cursor: pointer; color: #6a7686; }
+.uiapp .tour-x:hover { background: #eef2f7; }
+.uiapp .tour-x:focus-visible, .uiapp .tour-ctl button:focus-visible { outline: 2px solid #0a6ed1; outline-offset: 2px; }
+.uiapp .tour-ctl { display: flex; align-items: center; gap: 10px; }
+.uiapp .tour-ctl button { all: unset; cursor: pointer; padding: 7px 16px; border-radius: 8px; border: 1px solid #bcc3ca; font-weight: 700; font-size: 13px; color: #0a6ed1; background: #fff; }
+.uiapp .tour-ctl button.primary { background: #0a6ed1; border-color: #0a6ed1; color: #fff; }
+.uiapp .tour-ctl button[disabled] { opacity: .4; cursor: default; }
+.uiapp .tour-dots { flex: 1; display: flex; justify-content: center; gap: 5px; }
+.uiapp .tour-dots i { width: 6px; height: 6px; border-radius: 50%; background: #d3d9e0; }
+.uiapp .tour-dots i.on { background: #0a6ed1; width: 16px; border-radius: 4px; }
+.uiapp .guide-tab { color: #fff; background: #0a6ed1; }
+.uiapp .guide-tab:hover { background: #0854a0; }
+
+/* On the step where the visitor changes the user, clicks reach the menu; only the card catches them */
+.uiapp .tour.pass { pointer-events: none; }
+.uiapp .tour.pass .tour-card { pointer-events: auto; }
+.uiapp .tour.pass .tour-spot { animation: nudge 1.4s ease-in-out infinite; }
+@keyframes nudge { 50% { box-shadow: 0 0 0 6px rgba(10, 110, 209, .55), 0 0 0 9999px rgba(12, 22, 42, .58); } }
+@media (prefers-reduced-motion: reduce) { .uiapp .tour.pass .tour-spot { animation: none; } }
+
+/* API calls bar: a bigger, easier target to open and close */
+.uiapp .apibar-h { padding: 14px 20px; min-height: 52px; font-size: 13.5px; gap: 14px; }
+.uiapp .apibar-h b { font-size: 13px; }
+.uiapp .apibar-h code, .uiapp .apibar code { font-size: 13px; padding: 2px 8px; }
+.uiapp .apibar-h i { display: inline-grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 50%; background: #0a6ed1; color: #fff; font-size: 16px; line-height: 1; }
+.uiapp .apibar-h:hover i { background: #0854a0; }
+.uiapp .apibar li { font-size: 13px; }
+.uiapp .apibar ol { max-height: 180px; }
+.uiapp .apibar-h i { font-size: 24px; padding-bottom: 3px; }
+.uiapp .apibar-h { font-size: 14px; }
+
+/* ---------- API calls grouped by the button that caused them ---------- */
+.uiapp .apibar-h .last { display: flex; align-items: center; gap: 8px; }
+.uiapp .apibar-h .by { white-space: nowrap; color: #32506f; }
+.uiapp .apibar-h .by em, .uiapp .apibar-list h6 em { font-style: normal; font-weight: 700; color: #0a6ed1; background: #e3eefb; padding: 2px 8px; border-radius: 6px; }
+.uiapp .apibar-h .arrow { color: #6a7686; }
+.uiapp .apibar .more { font-size: 11px; color: #6a7686; background: #eef2f7; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.uiapp .apibar-list { display: none; max-height: 230px; overflow: auto; overscroll-behavior: contain; padding: 0 20px 14px; }
+.uiapp .apibar.open .apibar-list { display: grid; gap: 12px; }
+.uiapp .apibar-list h6 { margin: 0 0 6px; font-size: 12px; font-weight: 600; color: #6a7686; }
+.uiapp .apibar-list ol { display: grid; gap: 5px; max-height: none; padding: 0; margin: 0; list-style: none; }
+.uiapp .apibar-list li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.uiapp .apibar-list .why { flex-basis: 100%; margin: -1px 0 2px 36px; font-size: 12px; color: #6a7686; }
+.uiapp .apibar-list .none { margin: 0; color: #6a7686; font-size: 13px; }
+@container app (max-width: 700px) { .uiapp .apibar-h .by { white-space: normal; } .uiapp .apibar-h .arrow, .uiapp .apibar-h .last code { display: none; } }
+
+/* Opened, the list shows every call, so the "+N more" hint in the header goes away */
+.uiapp .apibar.open .apibar-h .more { display: none; }
+
+/* ---------- Tour on small screens: a compact sheet that never covers what it points at ---------- */
+.app-touring .av, .app-touring .av-spot { display: none !important; }
+.uiapp .tour-card.sheet { left: 8px; right: 8px; width: auto; translate: none; padding: 12px 14px; }
+.uiapp .tour-card.sheet h5 { font-size: 15px; margin: 2px 0 4px; padding-right: 26px; }
+.uiapp .tour-card.sheet p { font-size: 13px; line-height: 1.45; margin-bottom: 10px; }
+.uiapp .tour-card.sheet .tour-ctl button { padding: 9px 18px; min-height: 40px; }
+.uiapp .tour-card.sheet .tour-dots { gap: 4px; }
+@container app (max-width: 640px) {
+  .uiapp .shell.touring .dlg-back { align-items: start; padding-top: 6px; overflow: auto; }
+  .uiapp .shell.touring .dlg { gap: 8px; padding: 14px; }
+  .uiapp .shell.touring .dlg .mini-list { max-height: 70px; }
+  .uiapp .shell.touring .dlg .muted { display: none; }
+}
+@media (max-height: 560px) { .uiapp .shell { height: 94vh; min-height: 0; } }
+
+/* Phone details: right-sized tour buttons and a one-line API bar */
+.uiapp .tour-ctl button { box-sizing: border-box; display: inline-grid; place-items: center; line-height: 1.1; }
+.uiapp .tour-card.sheet .tour-ctl button { min-height: 0; height: 38px; padding: 0 18px; }
+.uiapp .apibar-h .last { min-width: 0; }
+.uiapp .apibar-h .by { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+@container app (max-width: 640px) {
+  .uiapp .apibar-h { padding: 10px 14px; min-height: 48px; gap: 10px; }
+  .uiapp .apibar-h .by { white-space: nowrap; font-size: 12.5px; }
+  .uiapp .apibar-h .by em { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+  .uiapp .apibar-h .more, .uiapp .apibar-h .last .badge { display: none; }
+  .uiapp .apibar-h i { width: 30px; height: 30px; font-size: 20px; }
+}
+
+/* Phones: use most of the screen height for the app window, so the tour card and its target both fit */
+@media (max-width: 700px) {
+  .uiapp .shell { height: calc(100vh - 84px); height: calc(100svh - 84px); min-height: 500px; max-height: 780px; }
+}
+
+/* While the tour runs on a narrow window, drop the hint line and the tour tab so the target has room above the card */
+@container app (max-width: 640px) {
+  .uiapp .shell.touring .hint, .uiapp .shell.touring .guide-tab { display: none; }
+  .uiapp .shell.touring .shell-bar { row-gap: 2px; padding-top: 6px; padding-bottom: 6px; min-height: 0; }
+}
+
+/* Scroll room below the content during the tour, as a spacer so it never changes the window layout */
+.uiapp .ui-page::after { content: ""; display: block; height: var(--tour-pad, 0px); }
+
+/* Rows keep their full content height, so a table can never be squashed to nothing inside the scrolling page */
+.uiapp .ui-page { grid-auto-rows: max-content; }
+
+/* During the tour the message bar scrolls away instead of sticking over the highlighted button */
+.uiapp .shell.touring .strip { position: static; box-shadow: none; }

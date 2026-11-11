@@ -1,0 +1,50 @@
+<mvc:View
+	controllerName="demo.shop.ui.controller.OrderDetail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page title="{i18n>orderDetails}" showNavButton="true" navButtonPress=".onBack">
+		<content>
+			<ObjectHeader title="{orderNo}" number="{total}" numberUnit="USD" intro="{customer/name} · {orderedOn}">
+				<attributes>
+					<ObjectAttribute title="{i18n>city}" text="{customer/city}" />
+					<ObjectAttribute title="{i18n>subtotal}" text="{subtotal} USD" />
+					<ObjectAttribute title="{i18n>discount}" text="-{discount} USD" />
+				</attributes>
+				<statuses>
+					<ObjectStatus text="{status}" state="{path: 'status', formatter: '.formatStatus'}" />
+				</statuses>
+			</ObjectHeader>
+
+			<!-- Order lifecycle: NEW -> PAID -> SHIPPED. Each button calls a CAP action; the server enforces the order of steps and the Admin role. -->
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button text="{i18n>markPaid}" type="Emphasized" icon="sap-icon://accept"
+					visible="{= ${status} === 'NEW' }" press=".onMarkPaid" />
+				<Button text="{i18n>ship}" type="Emphasized" icon="sap-icon://shipping-status"
+					visible="{= ${status} === 'PAID' }" press=".onShip" />
+				<Button text="{i18n>cancelOrder}" type="Reject" icon="sap-icon://decline"
+					visible="{= ['NEW', 'PAID'].includes(${status}) }" press=".onCancelOrder" />
+			</Toolbar>
+
+			<Table id="itemsTable" items="{ path: 'items', parameters: { $expand: 'product' } }" class="sapUiResponsiveMargin" width="auto">
+				<headerToolbar><OverflowToolbar><Title text="{i18n>items}" level="H2" /></OverflowToolbar></headerToolbar>
+				<columns>
+					<Column><Text text="{i18n>product}" /></Column>
+					<Column hAlign="End"><Text text="{i18n>quantity}" /></Column>
+					<Column hAlign="End"><Text text="{i18n>unitPrice}" /></Column>
+					<Column hAlign="End"><Text text="{i18n>lineTotal}" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{product/name}" text="{product/sku}" />
+							<Text text="{quantity}" />
+							<ObjectNumber number="{unitPrice}" unit="USD" />
+							<ObjectNumber number="{lineTotal}" unit="USD" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

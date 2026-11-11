@@ -1,0 +1,2 @@
+/* Small touches on top of the SAP Horizon theme */
+.sapMPage > section { background: var(--sapBackgroundColor); }

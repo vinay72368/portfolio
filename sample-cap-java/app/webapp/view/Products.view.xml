@@ -1,0 +1,55 @@
+<mvc:View
+	controllerName="demo.shop.ui.controller.Products"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page title="{i18n>shopTitle}">
+		<headerContent>
+			<Button icon="sap-icon://sales-order" text="{i18n>myOrders}" press=".onOrders" />
+			<Button icon="sap-icon://business-objects-experience" text="{i18n>sales}" press=".onSales" />
+		</headerContent>
+		<content>
+			<!-- Bound straight to the OData V4 entity set: sorting, filtering and paging happen on the server -->
+			<Table id="productsTable"
+				items="{ path: '/Products', parameters: { $orderby: 'name' }, filters: [{ path: 'active', operator: 'EQ', value1: true }] }"
+				growing="true" growingThreshold="20"
+				sticky="ColumnHeaders,HeaderToolbar"
+				noDataText="{i18n>noProducts}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="{i18n>products}" level="H2" />
+						<ToolbarSpacer />
+						<SearchField width="16rem" placeholder="{i18n>search}" search=".onSearch" />
+						<ToggleButton icon="sap-icon://alert" text="{i18n>lowStock}" tooltip="{i18n>lowStockTooltip}" press=".onToggleLowStock" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column><Text text="{i18n>name}" /></Column>
+					<Column minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>category}" /></Column>
+					<Column hAlign="End"><Text text="{i18n>price}" /></Column>
+					<Column hAlign="End" minScreenWidth="Tablet" demandPopin="true"><Text text="{i18n>stock}" /></Column>
+					<Column hAlign="End" width="7rem"><Text text="" /></Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{name}" text="{sku}" />
+							<Text text="{category}" />
+							<ObjectNumber number="{price}" unit="USD" />
+							<ObjectStatus text="{stock}" state="{path: 'stock', formatter: '.formatStock'}" />
+							<Button icon="sap-icon://add-product" text="{i18n>add}" enabled="{= ${stock} > 0 }" press=".onAdd" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Text text="{i18n>cart}: {cart>/count} {i18n>itemsLabel}" />
+				<Text visible="{= ${cart>/discountPercent} > 0 }" text="({cart>/discountPercent}% {i18n>off})" />
+				<ToolbarSpacer />
+				<ObjectNumber number="{cart>/total}" unit="USD" emphasized="true" />
+				<Button text="{i18n>checkout}" type="Emphasized" icon="sap-icon://cart" enabled="{= ${cart>/count} > 0 }" press=".onCheckout" />
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAP Store: a sample CAP Java app | Vinay J</title>
+<meta name="description" content="Interactive tour of a sample SAP CAP (Java) project: browse the CDS model and Java handlers, watch a request flow through the stack, and call the OData API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="polish.css">
+<link rel="stylesheet" href="project.css">
+<link rel="stylesheet" href="avatar.css">
+</head>
+<body>
+<div class="bgart" aria-hidden="true"><div class="mesh"></div><div class="grid"></div><i class="shape s1"></i><i class="shape s2"></i><i class="shape s3"></i><i class="shape s4"></i></div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="logo" href="index.html">VJ<span>.</span></a>
+  <nav>
+    <a href="index.html">← Portfolio</a>
+    <a href="#ui">UI5 app</a>
+    <a href="#flow">Request flow</a>
+    <a href="#explore">Browse code</a>
+    <a href="#try">Try the API</a>
+  </nav>
+  <button id="theme" aria-label="Toggle light/dark theme">◐</button>
+  <button id="menu" class="nav-menu" aria-label="Open menu" aria-expanded="false"><i class="bi bi-list"></i></button>
+</header>
+
+<main id="top">
+<section class="hero p-hero">
+  <div class="p-copy">
+    <p class="eyebrow">Interactive sample</p>
+    <h1>CAP Store</h1>
+    <h2>A full-stack CAP Java + UI5 store you can click through</h2>
+    <p class="lead">A small end-to-end e-commerce app: a <b>UI5</b> storefront, a <b>SAP CAP Java</b> service and a <b>HANA</b>-ready data model. The backend checks stock, applies a volume discount and keeps the inventory right.</p>
+    <p class="tags"><span>UI5</span><span>OData V4</span><span>CDS</span><span>CAP Java SDK</span><span>Spring Boot</span><span>XSUAA roles</span><span>JUnit</span><span>MTA</span></p>
+    <div class="cta">
+      <a class="btn primary" href="#ui" data-tour><i class="bi bi-play-circle"></i> Start the 1-minute tour</a>
+      <a class="btn" href="#explore"><i class="bi bi-code-slash"></i> Browse the code</a>
+    </div>
+    <p class="fine"><b>Free to reuse.</b> The store and API below run a JavaScript copy of the same rules on the same data, because a static site cannot run Java. Both share one in-memory database.</p>
+  </div>
+  <aside class="p-card card" aria-label="How the project fits together">
+    <h4>How it fits together</h4>
+    <ol class="p-stack">
+      <li><b>UI5 storefront</b><span>products, basket, orders</span></li>
+      <li><b>OData V4 API</b><span>generated from one CDS file</span></li>
+      <li><b>CAP Java handlers</b><span>stock, pricing, order status</span></li>
+      <li><b>SAP HANA Cloud</b><span>H2 when run locally</span></li>
+    </ol>
+    <ul class="p-facts"><li><b>4</b><span>entities</span></li><li><b>5</b><span>actions</span></li><li><b>3</b><span>functions</span></li><li><b>2</b><span>roles</span></li></ul>
+  </aside>
+</section>
+
+<section id="ui">
+  <div class="tour-strip">
+    <div><b>New here?</b> Take the guided tour. It highlights each part of the app and does the clicks for you.</div>
+    <button class="btn primary" data-tour><i class="bi bi-play-circle"></i> Start the tour</button>
+  </div>
+  <div class="uiapp" id="uiapp"></div>
+</section>
+
+<section id="flow">
+  <h3 class="title">Follow a request</h3>
+  <p class="muted">Press play, or click any step to see what happens there and open the file responsible.</p>
+  <div class="flow-bar"><button class="btn primary" id="flow-play">▶ Play request</button></div>
+  <ol class="flow" id="flow-nodes"></ol>
+  <div class="card flow-detail" id="flow-detail"></div>
+</section>
+
+<section id="explore">
+  <h3 class="title">Browse the code</h3>
+  <div class="explorer">
+    <aside class="tree card" id="tree" aria-label="Project files"></aside>
+    <div class="viewer card">
+      <div class="viewer-head"><span id="file-path"></span><button class="btn small" id="copy">Copy</button></div>
+      <p class="file-note" id="file-note"></p>
+      <pre class="code"><code id="code"></code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="try">
+  <h3 class="title">Try the API</h3>
+  <p class="muted">Pick a user, pick a request, press Send. Try deleting a product as <b>customer</b> (not allowed) and then place an order. Changes live in memory only.</p>
+  <div class="play">
+    <div class="presets card" id="presets"></div>
+    <div class="req card">
+      <div class="req-row">
+        <label>User
+          <select id="pg-user">
+            <option value="customer">CUSTOMER (SHOPPER)</option>
+            <option value="admin">ADMIN (SHOP OPERATOR)</option>
+            <option value="anonymous">NOT LOGGED IN</option>
+          </select>
+        </label>
+        <label>Method
+          <select id="pg-method"><option>GET</option><option>POST</option><option>DELETE</option></select>
+        </label>
+        <label class="grow">URL <input id="pg-url" spellcheck="false" autocomplete="off"></label>
+        <button class="btn primary" id="pg-send">Send</button>
+      </div>
+      <label>Body (JSON) <textarea id="pg-body" rows="4" spellcheck="false"></textarea></label>
+      <p class="muted small" id="pg-auth"></p>
+      <div class="res-head"><span class="badge" id="pg-status">-</span><span class="muted small" id="pg-time"></span><button class="btn small" id="pg-reset">Reset data</button></div>
+      <pre class="code res"><code id="pg-res">Press Send to see the response.</code></pre>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Vinay J · <a href="index.html">Back to portfolio</a></footer>
+
+<script src="project-files.js"></script>
+<script src="sim.js"></script>
+<script src="script.js"></script>
+<script src="explorer.js"></script>
+<script src="ui.js"></script>
+<script>
+window.AVATAR_TOUR = [
+  { sel: '.hero',    text: "Welcome to the sample CAP Java project: CAP Store, a small online store. It's small on purpose, so you can see every moving part." },
+  { sel: '#ui',      text: "This is the UI5 storefront. Press Start the tour and it will walk you through an order, from basket to shipping, in about a minute." },
+  { sel: '#flow',    text: "First, the big picture. Press play to watch one request travel from the client to SAP HANA Cloud and back." },
+  { sel: '#explore', text: "Here is the real source code. Start with schema dot cds, then the service, then the Java handler where the order logic lives." },
+  { sel: '#try',     text: "And here you can call the API. Try deleting a product as a customer, then place an order, and compare the answers." },
+];
+</script>
+<script src="avatar.js"></script>
+</body>
+</html>

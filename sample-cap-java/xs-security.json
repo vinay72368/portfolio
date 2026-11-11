@@ -1,0 +1,12 @@
+{
+  "xsappname": "shop",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    { "name": "$XSAPPNAME.Customer", "description": "Browse products and place orders" },
+    { "name": "$XSAPPNAME.Admin",    "description": "Manage products, customers and orders" }
+  ],
+  "role-templates": [
+    { "name": "Customer", "description": "Shopper",       "scope-references": ["$XSAPPNAME.Customer"] },
+    { "name": "Admin",    "description": "Shop operator", "scope-references": ["$XSAPPNAME.Admin"] }
+  ]
+}

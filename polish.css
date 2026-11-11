@@ -1,0 +1,252 @@
+/* Polish layer: typography, calmer components, a compact layout and an animated background.
+   Loaded after style.css, so it refines the base design. */
+:root {
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --grid: rgba(150, 175, 255, .07);
+}
+:root[data-theme="light"] { --grid: rgba(10, 110, 209, .07); }
+
+body { font-family: var(--font); line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+h1, h2, h3, h4 { letter-spacing: -.02em; }
+
+/* ---------- Animated background: drifting colour mesh, a soft grid and floating shapes ---------- */
+.bgart { position: fixed; inset: 0; z-index: -3; overflow: hidden; pointer-events: none; }
+.bgart .mesh {
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(38% 42% at 18% 22%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 70%),
+    radial-gradient(34% 38% at 82% 18%, color-mix(in srgb, var(--accent-2) 30%, transparent), transparent 70%),
+    radial-gradient(40% 44% at 72% 84%, color-mix(in srgb, #19d3a2 22%, transparent), transparent 70%),
+    radial-gradient(36% 40% at 14% 86%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  filter: blur(30px);
+  animation: meshMove 28s ease-in-out infinite alternate;
+}
+.bgart .grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 30%, #000 15%, transparent 80%);
+  mask-image: radial-gradient(75% 65% at 50% 30%, #000 15%, transparent 80%);
+  animation: gridDrift 45s linear infinite;
+}
+.bgart .shape {
+  position: absolute; border-radius: 30%;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
+  animation: floatShape 20s ease-in-out infinite;
+}
+.bgart .s1 { width: 130px; height: 130px; left: 4%; top: 64%; }
+.bgart .s2 { width: 84px; height: 84px; right: 7%; top: 46%; animation-delay: -7s; border-radius: 50%; }
+.bgart .s3 { width: 54px; height: 54px; left: 46%; top: 14%; animation-delay: -12s; }
+.bgart .s4 { width: 96px; height: 96px; right: 22%; bottom: 8%; animation-delay: -3s; border-radius: 24%; }
+@keyframes meshMove {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(3%, -2%, 0) scale(1.08) rotate(2deg); }
+  100% { transform: translate3d(-3%, 3%, 0) scale(1.04) rotate(-2deg); }
+}
+@keyframes gridDrift { to { background-position: 56px 56px, 56px 56px; } }
+@keyframes floatShape { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-30px) rotate(14deg); } }
+
+/* ---------- Calmer page: no cursor-driven movement ---------- */
+.card::before { display: none; }
+.hero h1 { background-size: 100% 100%; animation: none; font-weight: 800; letter-spacing: -.035em; }
+.eyebrow { letter-spacing: .04em; text-transform: uppercase; font-size: .8rem; }
+
+/* ---------- Header ---------- */
+.nav { min-height: 64px; gap: 14px; }
+.nav nav { gap: 22px; font-weight: 500; }
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); font-weight: 600; font-size: .88rem; white-space: nowrap;
+  transition: border-color .15s, transform .15s;
+}
+.nav-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.nav-btn.solid { background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; color: #fff; }
+.nav-btn i { font-size: 1rem; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 20px; border-radius: 12px; font-weight: 600; box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,.05)); }
+.btn i { font-size: 1.05rem; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { animation: none; box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 35%, transparent); }
+
+/* ---------- Compact layout: less scrolling ---------- */
+section { padding: 40px 0; }
+.title { margin-bottom: 18px; font-size: clamp(1.6rem, 3.5vw, 2.1rem); }
+.hero { padding-top: 44px; padding-bottom: 12px; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+.hero .lead { margin: 12px 0 0; }
+.cta { margin: 20px 0 8px; gap: 10px; }
+.stats { margin-top: 26px; gap: 12px; }
+.stats li { display: flex; flex-direction: column; padding: 14px 16px; }
+.stats b { font-size: 1.8rem; }
+
+/* About + Education side by side */
+.duo { display: grid; grid-template-columns: 1.55fr 1fr; gap: 36px; align-items: start; }
+.duo .title { margin-bottom: 14px; }
+.about p { margin: 0 0 12px; }
+.edu { display: grid; gap: 12px; }
+.edu .card { padding: 16px 18px; }
+.edu .card h4 { font-size: 1rem; }
+.edu .card p { margin: 0; font-size: .92rem; }
+.edu .card p + p { margin-top: 2px; }
+
+/* Skills: three columns */
+.skills { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sk { padding: 18px 18px 16px; }
+.sk header { margin-bottom: 12px; gap: 12px; }
+.sk h4 { font-size: 1.08rem; }
+.sk .ico { width: 42px; height: 42px; border-radius: 12px; }
+.sk .ico svg { width: 22px; height: 22px; }
+.sk .tags { gap: 8px; }
+.sk .tags span { padding: 5px 11px; font-size: .9rem; gap: 7px; }
+.sk .tags img { width: 17px; height: 17px; }
+.sk:last-child { grid-column: 1 / -1; }
+
+/* Experience: bullets in two columns */
+.job { padding: 20px 26px 10px; }
+.job ul { columns: 2; column-gap: 36px; margin: 10px 0 0; padding-left: 18px; }
+.job li { break-inside: avoid; margin-bottom: 10px; font-size: .95rem; }
+
+/* Projects: 2 x 2 compact cards, and the whole featured card is one click */
+.projects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.projects .card { display: block; padding: 0 0 16px; overflow: hidden; }
+.projects .card .banner { display: block; width: 100%; height: auto; aspect-ratio: 400 / 160; margin: 0 0 14px; }
+.projects .card > :not(.banner) { margin-left: 18px; margin-right: 18px; }
+.projects .card h4 { font-size: 1.02rem; margin-bottom: 4px; }
+.projects .card p { font-size: .9rem; margin-bottom: 8px; }
+.projects .card .tags { margin-bottom: 4px; }
+.projects .card .tags span { font-size: .74rem; padding: 2px 9px; }
+.projects .card .btn { margin-top: 10px; min-height: 40px; padding: 8px 18px; }
+.card.featured .btn::after { content: ""; position: absolute; inset: 0; }
+.card:hover .banner { transform: none; }
+
+/* Contact: just the panel */
+#contact { padding-bottom: 28px; }
+.contact-panel { padding: clamp(24px, 4vw, 40px); }
+.contact-panel h4 { font-size: clamp(1.4rem, 3.4vw, 2rem); }
+.contact-panel .lead { margin-top: 6px; }
+.contact-panel .muted i { margin-right: 6px; }
+
+footer { padding-top: 20px; padding-bottom: 28px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+footer a { color: var(--accent); font-weight: 600; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .duo { grid-template-columns: 1fr; gap: 20px; }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sk:last-child { grid-column: 1 / -1; }
+  .job ul { columns: 1; }
+  .projects { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .nav-btn span { display: none; }
+  .nav-btn { padding: 8px 10px; }
+  .skills { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgart .mesh, .bgart .grid, .bgart .shape { animation: none; }
+}
+
+/* Keep the hero text clear of the portrait and its orbiting chips */
+@media (min-width: 900px) { .hero > :not(.hero-visual):not(.stats) { max-width: 540px; } }
+
+/* ---------- Never scroll sideways ---------- */
+html, body { overflow-x: clip; max-width: 100%; }
+@supports not (overflow-x: clip) { html, body { overflow-x: hidden; } }
+/* Full-width section tints: a shadow instead of an oversized box, so they cannot create horizontal scrolling */
+#skills::before, #projects::before {
+  inset: 0; background: none; border: 0;
+  box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--accent) 4%, transparent);
+  clip-path: inset(0 -100vmax);
+}
+#education::before { display: none; }
+
+/* ---------- Hero portrait on every screen ---------- */
+.hero-visual .orbit span { transform: rotate(var(--a)) translateY(calc(-1 * var(--r, 205px))); }
+
+/* Laptops and small desktops: a smaller portrait with a tighter orbit, so nothing is cut off */
+@media (min-width: 900px) and (max-width: 1160px) {
+  .hero > .hero-visual.hero-visual { width: 330px; right: 14px; --r: 150px; }
+  .hero > :not(.hero-visual):not(.stats) { max-width: min(540px, calc(100% - 360px)); }
+}
+
+/* Tablets and phones: the portrait sits above the text, centred and without the orbit */
+@media (max-width: 899px) {
+  .hero { padding-top: 24px; }
+  .hero-visual { display: block; position: relative; width: min(230px, 60vw); aspect-ratio: 1; margin: 0 auto 14px; }
+  .hero-visual .orbit { display: none; }
+  .hero-visual .disc { inset: 0; }
+  .hero { text-align: center; }
+  .hero .lead, .hero .typed { margin-left: auto; margin-right: auto; }
+  .hero .typed { max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .hero .cta { justify-content: center; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 700px) {
+  .nav { padding-left: 14px; padding-right: 14px; gap: 8px; }
+  main, footer { padding-left: 16px; padding-right: 16px; }
+  section { padding: 30px 0; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+  .stats li { padding: 12px 14px; text-align: left; }
+  .stats b { font-size: 1.5rem; }
+  .cta .btn { flex: 1 1 100%; }
+  .job { padding: 16px 16px 6px 18px; }
+  .job header { flex-direction: column; gap: 2px; }
+  .contact-panel .cta .btn { flex: 1 1 100%; word-break: break-word; }
+  footer { flex-direction: column; align-items: center; text-align: center; }
+  .av { right: 12px; bottom: 12px; }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  h1 { font-size: 2.3rem; }
+  .sk .tags span { font-size: .85rem; padding: 4px 9px; }
+  .nav-btn { padding: 8px; }
+  .logo { font-size: 1.1rem; }
+}
+
+/* Very large screens: a little more room, and the content stays centred */
+@media (min-width: 1500px) {
+  main, footer { max-width: 1180px; }
+  .nav { max-width: none; padding-left: max(20px, calc(50% - 590px)); padding-right: max(20px, calc(50% - 590px)); }
+  body { font-size: 17px; }
+}
+
+/* ---------- Phone menu ---------- */
+.nav-menu { display: none; width: 38px; height: 38px; place-items: center; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 1.15rem; }
+.nav-menu:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 700px) {
+  .nav { position: sticky; }
+  .nav-menu { display: inline-grid; }
+  .nav .nav-btn:first-of-type { margin-left: auto; }
+  #theme { margin-left: 0; }
+  .nav nav { display: none; position: absolute; top: 100%; left: 0; right: 0; margin: 0; flex-direction: column; gap: 0; padding: 6px 16px 12px;
+    background: var(--surface); border-bottom: 1px solid var(--border); box-shadow: 0 16px 30px rgba(0, 0, 0, .12); }
+  .nav.open nav { display: flex; }
+  .nav nav a { padding: 12px 4px; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--text); }
+  .nav nav a:last-child { border-bottom: 0; }
+  .hero .cta .btn.primary { flex-basis: 100%; }
+  .hero .cta .btn:not(.primary) { flex: 1 1 calc(50% - 6px); }
+}
+
+/* ---------- Header: links never wrap, and tablets get the menu too ---------- */
+.nav nav a { white-space: nowrap; }
+@media (max-width: 899px) {
+  .nav-menu { display: inline-grid; }
+  .nav .nav-btn:first-of-type { margin-left: auto; }
+  #theme { margin-left: 0; }
+  .nav nav { display: none; position: absolute; top: 100%; left: 0; right: 0; margin: 0; flex-direction: column; gap: 0; padding: 6px max(16px, 5vw) 12px;
+    background: var(--surface); border-bottom: 1px solid var(--border); box-shadow: 0 16px 30px rgba(0, 0, 0, .12); }
+  .nav.open nav { display: flex; }
+  .nav nav a { padding: 12px 4px; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--text); }
+  .nav nav a:last-child { border-bottom: 0; }
+}
+
+/* ---------- Room below the portrait for its orbiting chips ---------- */
+@media (min-width: 900px) { .hero .stats { margin-top: 64px; } }
+
+/* The theme and menu buttons sit on the right when the links are in the menu */
+@media (max-width: 899px) { #theme { margin-left: auto; } }

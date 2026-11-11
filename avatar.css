@@ -1,0 +1,31 @@
+/* Floating guide: a compass icon, with a text tour */
+.av { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; max-width: calc(100vw - 40px); }
+.av-btn { all: unset; cursor: pointer; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-sizing: border-box;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 45%, transparent); transition: box-shadow .2s; }
+.av-btn:hover { box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 65%, transparent); }
+.av-btn:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+.av-btn svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.av-bubble { position: relative; width: min(340px, calc(100vw - 40px)); background: var(--surface); border: 1px solid var(--accent); border-radius: 16px 16px 4px 16px;
+  padding: 18px 18px 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, .3); }
+.av-bubble[hidden], .av-ctl[hidden], .av-actions[hidden] { display: none; }
+.av-x { all: unset; cursor: pointer; position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; color: var(--muted); font-size: 14px; }
+.av-x:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); }
+.av-x:focus-visible { outline: 2px solid var(--accent); }
+.av-text { margin: 0 0 14px; padding-right: 24px; font-size: .95rem; line-height: 1.55; min-height: 3em; }
+.av-ctl, .av-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.av-ctl button, .av-actions button { all: unset; cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); font-size: .82rem; font-weight: 600; background: var(--bg); }
+.av-ctl button:hover, .av-actions button:hover { border-color: var(--accent); color: var(--accent); }
+.av-ctl button:focus-visible, .av-actions button:focus-visible { outline: 2px solid var(--accent); }
+.av-ctl .av-count { margin-left: auto; color: var(--muted); font-size: .8rem; }
+.av-ctl .on, .av-actions .primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.av-ctl .on:hover, .av-actions .primary:hover { color: #fff; filter: brightness(1.1); }
+
+/* Tour spotlight: the frame sits outside the section, and the shadow dims the rest of the page */
+.av-spot { position: fixed; z-index: 35; border-radius: 20px; pointer-events: none; transition: opacity .3s;
+  box-shadow: 0 0 0 3px var(--accent), 0 0 30px 4px color-mix(in srgb, var(--accent) 55%, transparent), 0 0 0 100vmax rgba(6, 10, 24, .6); }
+.av-spot[hidden] { display: none; }
+
+@media (max-width: 640px) {
+  .av-btn { width: 52px; height: 52px; }
+}
