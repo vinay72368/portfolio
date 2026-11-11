@@ -7,7 +7,7 @@
 <meta name="description" content="Interactive tour of a sample SAP CAP (Java) project: browse the CDS model and Java handlers, watch a request flow through the stack, and call the OData API.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="polish.css">
@@ -48,9 +48,9 @@
   <aside class="p-card card" aria-label="How the project fits together">
     <h4>How it fits together</h4>
     <ol class="p-stack">
-      <li><b>UI5 storefront</b><span>products, basket, orders</span></li>
-      <li><b>OData V4 API</b><span>generated from one CDS file</span></li>
-      <li><b>CAP Java handlers</b><span>stock, pricing, order status</span></li>
+      <li><b>UI5 storefront</b><span>Products, basket, orders</span></li>
+      <li><b>OData V4 API</b><span>Generated from one CDS file</span></li>
+      <li><b>CAP Java handlers</b><span>Stock, pricing, order status</span></li>
       <li><b>SAP HANA Cloud</b><span>H2 when run locally</span></li>
     </ol>
     <ul class="p-facts"><li><b>4</b><span>entities</span></li><li><b>5</b><span>actions</span></li><li><b>3</b><span>functions</span></li><li><b>2</b><span>roles</span></li></ul>
@@ -126,7 +126,7 @@ window.AVATAR_TOUR = [
   { sel: '.hero',    text: "Welcome to the sample CAP Java project: CAP Store, a small online store. It's small on purpose, so you can see every moving part." },
   { sel: '#ui',      text: "This is the UI5 storefront. Press Start the tour and it will walk you through an order, from basket to shipping, in about a minute." },
   { sel: '#flow',    text: "First, the big picture. Press play to watch one request travel from the client to SAP HANA Cloud and back." },
-  { sel: '#explore', text: "Here is the real source code. Start with schema dot cds, then the service, then the Java handler where the order logic lives." },
+  { sel: '#explore', text: "Here is the real source code. Start with schema.cds, then the service, then the Java handler where the order logic lives." },
   { sel: '#try',     text: "And here you can call the API. Try deleting a product as a customer, then place an order, and compare the answers." },
 ];
 </script>

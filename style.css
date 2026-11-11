@@ -199,18 +199,7 @@ section:not(.hero) .title { font-size: clamp(1.8rem, 4vw, 2.4rem); }
 .job b { color: var(--accent); }
 
 /* Contact panel */
-.contact-panel { position: relative; overflow: hidden; padding: clamp(24px, 5vw, 48px); border-radius: 24px; color: #fff; text-align: center;
-  background: linear-gradient(135deg, #0a6ed1, #5b3fd6 60%, #a2379b); box-shadow: 0 24px 70px color-mix(in srgb, var(--accent-2) 40%, transparent); }
-.contact-panel::before, .contact-panel::after { content: ""; position: absolute; width: 320px; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, .1); animation: drift 16s ease-in-out infinite alternate; }
-.contact-panel::before { top: -140px; left: -80px; } .contact-panel::after { bottom: -160px; right: -60px; animation-duration: 22s; }
-.contact-panel > * { position: relative; z-index: 1; }
-.contact-panel h4 { margin: 0 0 8px; font-size: clamp(1.5rem, 4vw, 2.2rem); }
-.contact-panel .lead, .contact-panel .muted { color: rgba(255, 255, 255, .85); margin-inline: auto; }
-.contact-panel .cta { justify-content: center; }
-.contact-panel .btn { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .4); color: #fff; backdrop-filter: blur(6px); }
-.contact-panel .btn.primary { background: #fff; color: #3a2a9c; animation: none; }
-
-@media (prefers-reduced-motion: reduce) { .hero-visual .orbit, .hero-visual .orbit b, .hero-visual .disc, .contact-panel::before, .contact-panel::after { animation: none !important; } }
+ @media (prefers-reduced-motion: reduce) { .hero-visual .orbit, .hero-visual .orbit b, .hero-visual .disc,  }
 
 /* ---------- Technical skills: bigger type, line icons, brand logos ---------- */
 .skills { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; }

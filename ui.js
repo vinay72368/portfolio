@@ -93,7 +93,7 @@
       return `<div class="toolbar"><h4>Sales</h4></div><p class="empty">${esc(fail(sum))}. Only admins can see sales figures, so switch the user to <b>admin</b>.</p>`;
     }
     const s = sum.body, list = top.body.value || [], max = Math.max(1, ...list.map(t => t.unitsSold));
-    return `<div class="toolbar"><h4>Sales</h4><small>cancelled orders are not counted</small></div>
+    return `<div class="toolbar"><h4>Sales</h4><small>Cancelled orders are not counted</small></div>
       <div class="kpis"><div><b>${s.orders}</b><span>Orders</span></div><div><b>${money(s.revenue)}</b><span>Revenue (USD)</span></div><div><b>${money(s.averageOrder)}</b><span>Average order (USD)</span></div></div>
       <div class="panel"><div class="panel-h">Top products by units sold</div><ul class="bars">
       ${list.map(t => `<li><span>${esc(t.name)}</span><span class="bar"><i style="width:${(t.unitsSold / max) * 100}%"></i></span><b>${t.unitsSold}</b></li>`).join('')}</ul></div>`;

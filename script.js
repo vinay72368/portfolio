@@ -106,3 +106,23 @@ addEventListener('scroll', () => {
     chip.prepend(img);
   });
 })();
+
+// Contact: the form opens the visitor's email app with the message filled in; the copy button copies the address.
+(() => {
+  const form = document.getElementById('contact-form');
+  if (form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(form), name = f.get('name').toString().trim(), email = f.get('email').toString().trim(), msg = f.get('message').toString().trim();
+    const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+    const body = encodeURIComponent(msg + '\n\n' + name + '\n' + email);
+    location.href = 'mailto:jujarayvinay1210@gmail.com?subject=' + subject + '&body=' + body;
+  });
+  const copy = document.getElementById('copy-email');
+  if (copy) copy.addEventListener('click', async () => {
+    const label = copy.querySelector('span'), old = label.textContent;
+    try { await navigator.clipboard.writeText(copy.dataset.email); label.textContent = 'Copied'; }
+    catch { label.textContent = copy.dataset.email; }
+    setTimeout(() => { label.textContent = old; }, 1600);
+  });
+})();
+
