@@ -1,0 +1,94 @@
+/* Recruiter-focused additions: core stack, ownership, case studies, architecture flows, skip link, focus. */
+
+.skip { position: absolute; left: 12px; top: -60px; z-index: 1000; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; transition: top .15s; }
+.skip:focus { top: 10px; }
+:where(a, button, summary, input, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* hero: core stack line */
+.core { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 14px 0 4px; padding: 0; list-style: none; }
+.core li { padding: 4px 11px; border-radius: 999px; font-size: .82rem; font-weight: 600; color: var(--text);
+  background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); }
+
+/* section intro */
+.sec-lead { margin: -8px 0 18px; color: var(--muted); font-size: .98rem; }
+
+/* skills: even 3 x 2 grid, with a short note under each heading */
+.sk:last-child { grid-column: auto; }
+.sk header > div { min-width: 0; }
+.sk-note { margin: 2px 0 0; font-size: .8rem; color: var(--muted); }
+
+/* experience: ownership strip */
+.own { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0 6px; padding: 0; list-style: none; columns: auto; }
+.own li { margin: 0; padding: 14px 14px 13px; border-radius: 14px; font-size: .88rem; line-height: 1.45;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface)); border: 1px solid var(--border); break-inside: auto; }
+.own i { display: block; margin-bottom: 6px; font-size: 1.25rem; color: var(--accent); }
+.own b { display: block; margin-bottom: 3px; font-size: .95rem; }
+.own span { color: var(--muted); }
+
+/* experience: grouped bullets */
+.jgroups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 36px; margin-top: 12px; }
+.jg h5 { display: flex; align-items: center; gap: 8px; margin: 12px 0 6px; font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.jg ul { columns: 1; margin: 0; padding-left: 18px; }
+.jg li { margin-bottom: 8px; font-size: .95rem; }
+.jg:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* projects: case studies */
+.projects { align-items: start; }
+.projects .card.wide { grid-column: 1 / -1; }
+.projects .card.case-card > details.case { margin: 12px 0 0; padding: 0; }
+.case summary { display: flex; align-items: center; gap: 10px; margin: 0 18px; padding: 10px 14px; border-radius: 12px; cursor: pointer; list-style: none; font-weight: 600; font-size: .9rem;
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border)); }
+.case summary::-webkit-details-marker { display: none; }
+.case summary::after { content: "+"; margin-left: auto; font-size: 1.25rem; line-height: 1; transition: transform .2s; }
+.case[open] summary::after { content: "–"; }
+.case summary:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.case-body { margin: 14px 18px 0; }
+.projects .card .case-body { margin-left: 18px; margin-right: 18px; }
+
+.cs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin: 0; }
+.cs > div { margin: 0; min-width: 0; }
+.cs dt { margin: 0 0 3px; font-family: var(--mono); font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.cs dd { margin: 0; font-size: .9rem; line-height: 1.55; color: var(--text); }
+
+.arch-t { margin: 18px 0 8px; font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.arch { padding: 14px; border-radius: 16px; background: color-mix(in srgb, var(--accent) 5%, var(--surface)); border: 1px dashed var(--border); }
+.lane + .lane { margin-top: 12px; }
+.lane-l { margin: 0 0 8px !important; font-size: .78rem !important; font-weight: 600; color: var(--muted); }
+.flow { display: flex; align-items: stretch; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.flow .n { position: relative; flex: 1 1 0; min-width: 0; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border);
+  border-top: 3px solid var(--c, var(--accent)); }
+.flow .n b { display: block; font-size: .86rem; line-height: 1.25; }
+.flow .n span { display: block; margin-top: 3px; font-size: .74rem; line-height: 1.35; color: var(--muted); }
+.flow .n + .n::before { content: ""; position: absolute; left: -17px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-top: 2px solid var(--muted); border-right: 2px solid var(--muted); transform: rotate(45deg); opacity: .8; }
+.arch-note { margin: 12px 0 0 !important; font-size: .82rem !important; color: var(--muted); }
+.arch-note i { color: var(--accent); }
+
+@media (max-width: 820px) {
+  .own { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jgroups { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cs { grid-template-columns: 1fr; }
+  .own { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; gap: 18px; }
+  .flow .n + .n::before { left: 50%; top: -14px; margin: 0 0 0 -6px; transform: rotate(135deg); }
+  .case summary, .case-body { margin-left: 14px; margin-right: 14px; }
+  .projects .card .case-body { margin-left: 14px; margin-right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .skip, .case summary::after { transition: none; } }
+
+/* fixes: group spacing, ownership strip alignment */
+.job .jgroups .jg { padding: 0; }
+.job .own { padding: 0; columns: auto; margin: 16px 0 6px; }
+.job .own li { margin: 0; font-size: .88rem; }
+.job .own b { color: var(--text); }
+.job .jg ul { columns: 1; padding-left: 18px; margin: 0; }
+
+/* CAP Store: full-width horizontal card, like AsInt Edge */
+@media (min-width: 900px) {
+  .projects .card.featured.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 38% minmax(0, 1fr); align-content: center; column-gap: 0; padding: 0 0 18px; }
+  .projects .card.featured.wide > .banner { grid-column: 1; grid-row: 1 / span 6; height: 100%; margin: 0; object-fit: cover; aspect-ratio: auto; }
+  .projects .card.featured.wide > :not(.banner):not(.stretch) { grid-column: 2; margin-left: 24px; margin-right: 24px; }
+  .projects .card.featured.wide > h4 { margin-top: 20px; }
+  .projects .card.featured.wide > .btn { justify-self: start; }
+}
