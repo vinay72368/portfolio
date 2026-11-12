@@ -1,0 +1,49 @@
+/* Recruiter-focused additions: core stack, ownership, case studies, architecture flows, skip link, focus. */
+
+.skip { position: absolute; left: 12px; top: -60px; z-index: 1000; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; transition: top .15s; }
+.skip:focus { top: 10px; }
+:where(a, button, summary, input, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* hero: core stack line */
+.core { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 14px 0 4px; padding: 0; list-style: none; }
+.core li { padding: 4px 11px; border-radius: 999px; font-size: .82rem; font-weight: 600; color: var(--text);
+  background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); }
+
+/* section intro */
+.sec-lead { margin: -8px 0 18px; color: var(--muted); font-size: .98rem; }
+
+/* skills: even 3 x 2 grid, with a short note under each heading */
+.sk header > div { min-width: 0; }
+.sk-note { margin: 2px 0 0; font-size: .8rem; color: var(--muted); }
+
+/* experience: ownership strip */
+.own { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0 6px; padding: 0; list-style: none; columns: auto; }
+.own li { margin: 0; padding: 14px 14px 13px; border-radius: 14px; font-size: .88rem; line-height: 1.45;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface)); border: 1px solid var(--border); break-inside: auto; }
+.own i { display: block; margin-bottom: 6px; font-size: 1.25rem; color: var(--accent); }
+.own b { display: block; margin-bottom: 3px; font-size: .95rem; }
+.own span { color: var(--muted); }
+
+/* experience: grouped bullets */
+.jgroups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 36px; margin-top: 12px; }
+.jg h5 { display: flex; align-items: center; gap: 8px; margin: 12px 0 6px; font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.jg ul { columns: 1; margin: 0; padding-left: 18px; }
+.jg li { margin-bottom: 8px; font-size: .95rem; }
+.jg:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+@media (max-width: 820px) {
+  .own { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jgroups { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .own { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .skip { transition: none; } }
+
+/* fixes: group spacing, ownership strip alignment */
+.job .jgroups .jg { padding: 0; }
+.job .own { padding: 0; columns: auto; margin: 16px 0 6px; }
+.job .own li { margin: 0; font-size: .88rem; }
+.job .own b { color: var(--text); }
+.job .jg ul { columns: 1; padding-left: 18px; margin: 0; }
+
