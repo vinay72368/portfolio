@@ -123,7 +123,7 @@ main, footer { position: relative; }
 @keyframes sweep { 0%, 60% { left: -60%; } 100% { left: 140%; } }
 
 /* Card spotlight */
-.card { position: relative; overflow: hidden; transform-style: preserve-3d; }
+.card { position: relative; overflow: hidden; }
 .card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
   background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%); }
 .card:hover::before { opacity: 1; }

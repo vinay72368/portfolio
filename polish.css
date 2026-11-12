@@ -118,7 +118,6 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); }
 .projects .card .tags { margin-bottom: 4px; }
 .projects .card .tags span { font-size: .74rem; padding: 2px 9px; }
 .projects .card .btn { margin-top: 10px; min-height: 40px; padding: 8px 18px; }
-.card.featured .btn::after { content: ""; position: absolute; inset: 0; }
 .card:hover .banner { transform: none; }
 
 /* Contact: just the panel */
@@ -341,13 +340,13 @@ h1 { font-weight: 600; letter-spacing: -.02em; line-height: 1.04; }
 .hero { padding-top: 44px; }
 @keyframes arrive { from { opacity: 0; transform: scale(.94); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
 
-/* A card that is one big link must not move on hover: a lifted button shrinks its own overlay and the pointer flickers.
-   Project cards highlight with their border and glow instead. */
-.projects .card:hover, .projects .card:focus-within { transform: none; }
-.card.featured .btn:hover, .card.featured .btn:focus-visible { transform: none; }
-.card.featured { cursor: pointer; }
-.card.featured .btn::after { cursor: pointer; }
 
-/* The stretched-link button must keep exactly the same box on hover: transform, filter and animation on it would resize its overlay and cause flicker */
-.card.featured .btn, .card.featured .btn:hover, .card.featured .btn:focus-visible { transform: none; filter: none; animation: none; will-change: auto; transition: border-color .15s, box-shadow .15s; }
-.card.featured:hover .btn { border-color: transparent; box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 45%, transparent); }
+
+/* The whole featured card is one link. The link is its own layer and nothing on it ever changes, so the pointer cannot flicker.
+   Project cards do not move on hover; they glow instead. */
+.projects .card:hover { transform: none; }
+.card.featured { cursor: pointer; }
+.projects .card.featured > .stretch { position: absolute; inset: 0; margin: 0; z-index: 3; border-radius: inherit; }
+.card.featured:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.card.featured:hover .btn { box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 45%, transparent); }
+.card.featured .btn { transform: none; transition: box-shadow .2s; }
