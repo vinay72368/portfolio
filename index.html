@@ -21,287 +21,296 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="polish.css">
-<link rel="stylesheet" href="cases.css">
+<link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="avatar.css">
 </head>
-<body>
-<a class="skip" href="#top">Skip to content</a>
-<div class="bgart" aria-hidden="true"><div class="mesh"></div><div class="grid"></div><i class="shape s1"></i><i class="shape s2"></i><i class="shape s3"></i><i class="shape s4"></i></div>
-<div class="progress" aria-hidden="true"></div>
+<body class="at-top">
+<a class="skip" href="#about">Skip to content</a>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="bar" aria-hidden="true"></div>
 
 <header class="nav">
-  <a class="logo" href="#top">VJ<span>.</span></a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#contact">Contact</a>
-    <a href="project.html#ui">Sample project ↗</a>
-  </nav>
-  <button id="theme" aria-label="Toggle light/dark theme">◐</button>
-  <button id="menu" class="nav-menu" aria-label="Open menu" aria-expanded="false"><i class="bi bi-list"></i></button>
+  <a class="logo" href="#top" aria-label="Vinay J, back to top">VJ<span>.</span></a>
+  <a class="l" href="#about">About</a>
+  <a class="l" href="#experience">Experience</a>
+  <a class="l" href="#skills">Skills</a>
+  <a class="l" href="#projects">Projects</a>
+  <a class="l" href="#achievements">Achievements</a>
+  <a class="l" href="#contact">Contact</a>
+  <a class="btn primary nav-resume" id="nav-resume" href="VINAY_SAP_CAP_JAVA_RESUME.pdf" download aria-label="Download résumé"><i class="bi bi-download"></i><span class="t">Résumé</span></a>
+  <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle light or dark theme"><i class="bi bi-circle-half"></i></button>
+  <button type="button" class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i class="bi bi-list"></i></button>
 </header>
+<nav class="menu" id="menu" aria-label="Menu">
+  <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a><a href="project.html#ui">Sample project ↗</a>
+</nav>
 
 <main id="top">
-
-<section class="hero" id="overview">
-  <div class="hero-visual has-portrait">
-    <div class="disc"><img class="portrait" src="img/me-cutout.png" alt="Portrait of Vinay J" width="353" height="465"></div>
-    <div class="orbit" aria-hidden="true">
-      <span style="--a:0deg"><b>CAP</b></span>
-      <span style="--a:72deg"><b>CDS</b></span>
-      <span style="--a:144deg"><b>OData</b></span>
-      <span style="--a:216deg"><b>Java</b></span>
-      <span style="--a:288deg"><b>HANA</b></span>
-    </div>
-  </div>
-  <p class="eyebrow">Hello, I'm</p>
-  <h1 class="glitch" data-text="Vinay J">Vinay J</h1>
-  <h2>SAP CAP (Java) Developer</h2>
-  <p class="typed"><span class="prompt">&gt;</span> <span id="typed"></span><span class="caret"></span></p>
-  <p class="lead">I build secure, cloud-native applications on <b>SAP BTP</b> with the <b>CAP Java SDK</b>, CDS, OData and Spring Boot, backed by <b>SAP HANA Cloud</b> and integrated with S/4HANA.</p>
-  <ul class="core" aria-label="Core stack"><li>SAP BTP</li><li>CAP Java</li><li>CDS &amp; OData</li><li>SAP HANA Cloud</li><li>XSUAA · OAuth2 · JWT</li><li>Spring Boot</li><li>Cloud Foundry</li></ul>
-  <div class="cta">
-    <a class="btn primary" href="project.html#ui"><i class="bi bi-play-circle"></i> Try the sample project</a>
-    <a class="btn" href="VINAY_SAP_CAP_JAVA_RESUME.pdf" download><i class="bi bi-download"></i> Résumé</a>
-    <a class="btn" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
-  </div>
-  <ul class="social" aria-label="Find me online">
-    <li><a href="https://linkedin.com/in/vinay-j-a44375179" target="_blank" rel="noopener" data-tip="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
-    <li><a href="https://github.com/vinay72368" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
-    <li><a href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" data-tip="WhatsApp" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
-    <li><a href="mailto:jujarayvinay1210@gmail.com" data-tip="Email" aria-label="Email"><i class="bi bi-envelope"></i></a></li>
-  </ul>
-  <ul class="stats">
-    <li><b data-count="3.5" data-decimals="1" data-suffix="+">3.5+</b><span>Years on SAP BTP &amp; Production</span></li>
-    <li><b data-count="100" data-suffix="+">100+</b><span>REST / OData services</span></li>
-    <li><b data-count="50" data-suffix="+">50+</b><span>CDS entities, 10 modules</span></li>
-    <li><b data-count="50" data-prefix="~" data-suffix="%">~50%</b><span>Faster HANA responses</span></li>
-  </ul>
-</section>
-
-<section id="about">
-  <div class="duo">
-    <div>
-      <h3 class="title">About</h3>
-      <div class="about">
-    <p>I'm an SAP CAP (Java) developer based in Bangalore, India, with 3.5+ years of experience delivering cloud-native applications on SAP BTP and in production. I work with CAP, the CAP Java SDK and Spring Boot, with strong CDS modeling on SAP HANA Cloud.</p>
-    <p>I'm the technical point of contact for an Asset Integrity Management platform for Oil &amp; Gas. There I've designed 100+ REST and OData services, secured them with OAuth2, JWT and XSUAA, and integrated them with S/4HANA through the Destination and Connectivity services. I also take part in design reviews and have mentored 10+ junior engineers. I received a Performance Excellence Award for outstanding performance, dedication and valuable contributions to the organization.</p>
-    <p>I currently lead backend development for AsInt Edge, developing applications on GCP and SAP using Java Spring Boot. On SAP, I build with CAP and CDS. I also handle client support and production management on the SAP stack.</p>
-    <p class="muted">Languages: English, Kannada, Telugu, Hindi, Marathi · Outside work: cricket, sketching, gaming and movies.</p>
-  </div>
-    </div>
-    <aside id="education">
-      <h3 class="title">Education</h3>
-      <div class="edu">
-        <article class="card"><h4>B.Tech, Computer Science</h4><p>Dayananda Sagar University, Bangalore</p><p class="muted">August 2018 – June 2022</p></article>
-        <article class="card"><h4>Intermediate (PU)</h4><p>Dayananda Sagar PU College, Bangalore</p><p class="muted">July 2016 – May 2018</p></article>
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="tagline"><i></i> Bangalore · India</p>
+        <h1 aria-label="Vinay J"><span class="w" aria-hidden="true"><span class="ch" style="--d:0">V</span><span class="ch" style="--d:1">i</span><span class="ch" style="--d:2">n</span><span class="ch" style="--d:3">a</span><span class="ch" style="--d:4">y</span></span><span class="w" aria-hidden="true"><span class="ch j grad" style="--d:5">J</span></span></h1>
+        <h2>SAP CAP <b>(Java)</b> Developer</h2>
+        <p class="lead">I build secure, cloud-native applications on <b>SAP BTP</b> with the <b>CAP Java SDK</b>, CDS, OData and Spring Boot, backed by <b>SAP HANA Cloud</b> and integrated with S/4HANA.</p>
+        <div class="cta">
+          <a class="btn primary" href="project.html#ui"><i class="bi bi-play-circle"></i> Try the sample project</a>
+          <a class="btn" href="VINAY_SAP_CAP_JAVA_RESUME.pdf" download><i class="bi bi-download"></i> Résumé</a>
+          <a class="btn" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
+        </div>
+        <ul class="social" aria-label="Find me online">
+          <li><a href="https://linkedin.com/in/vinay-j-a44375179" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+          <li><a href="https://github.com/vinay72368" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+          <li><a href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
+          <li><a href="mailto:jujarayvinay1210@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a></li>
+        </ul>
       </div>
-    </aside>
+      <div class="vis">
+        <div class="halo"></div>
+        <div class="disc"><img class="portrait" src="img/me-cutout.png" alt="Portrait of Vinay J" width="353" height="465"></div>
+        <div class="orbit" aria-hidden="true">
+          <span style="--a:0deg"><b>CAP</b></span><span style="--a:60deg"><b>CDS</b></span><span style="--a:120deg"><b>OData</b></span>
+          <span style="--a:180deg"><b>Java</b></span><span style="--a:240deg"><b>HANA</b></span><span style="--a:300deg"><b>BTP</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll" aria-hidden="true"><i></i>Scroll</div>
+  </section>
+
+    <div class="wrap">
+    <div class="nums">
+      <div class="num spot rv"><b data-count="3.5" data-decimals="1" data-suffix="+">3.5+</b><span>Years on SAP BTP &amp; production</span></div>
+      <div class="num spot rv"><b data-count="100" data-suffix="+">100+</b><span>REST / OData services</span></div>
+      <div class="num spot rv"><b data-count="50" data-suffix="+">50+</b><span>CDS entities, 10 modules</span></div>
+      <div class="num spot rv"><b data-count="50" data-prefix="~" data-suffix="%">~50%</b><span>Faster HANA responses</span></div>
+    </div>
   </div>
-</section>
 
-<section id="skills">
-  <h3 class="title">Technical Skills</h3>
-  <p class="sec-lead">Grouped by how I use them day to day, with the core SAP stack first.</p>
-  <div class="grid skills">
-    <article class="card sk" style="--c:#0a6ed1"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5H7z"/></svg></span><div><h4>SAP BTP &amp; CAP</h4><p class="sk-note">Core, used daily</p></div></header>
-      <p class="tags"><span>SAP BTP</span><span>CAP</span><span>CAP Java SDK</span><span>CDS</span><span>OData</span><span>CDS database modeling</span><span>S/4HANA integration</span></p></article>
-    <article class="card sk" style="--c:#e8710a"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 5-3 14"/></svg></span><div><h4>Backend Engineering</h4><p class="sk-note">Java services</p></div></header>
-      <p class="tags"><span>Java 8/11/21</span><span>Spring Boot</span><span>Microservices</span><span>REST APIs</span><span>Spring Data JPA / Hibernate</span><span>Apache Kafka</span><span>CompletableFuture / ExecutorService</span><span>SQL</span><span>JavaScript (ES6+)</span></p></article>
-    <article class="card sk" style="--c:#0e9f8e"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8 7.5 9.5 4.3-1.5 7.5-5 7.5-9.5V6L12 3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><div><h4>Security &amp; Integration</h4><p class="sk-note">Secure, connected services</p></div></header>
-      <p class="tags"><span>XSUAA</span><span>OAuth2</span><span>JWT</span><span>SAP Identity Services</span><span>Spring Security</span><span>Destination</span><span>Connectivity</span><span>Event Mesh</span><span>Job Scheduler</span></p></article>
-    <article class="card sk" style="--c:#d6409f"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg></span><div><h4>Database</h4><p class="sk-note">Modeling and tuning</p></div></header>
-      <p class="tags"><span>SAP HANA Cloud</span><span>HANA SQL</span><span>HANA query tuning</span><span>PostgreSQL</span></p></article>
-    <article class="card sk" style="--c:#7c5cff"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5H7z"/></svg></span><div><h4>Cloud &amp; DevOps</h4><p class="sk-note">Where the apps run</p></div></header>
-      <p class="tags"><span>Cloud Foundry</span><span>Docker</span><span>GCP</span></p></article>
-    <article class="card sk" style="--c:#2fa84f"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 15.5"/><path d="M4 20v-4.5h4.5"/><path d="m9.5 12 2 2 3.5-4"/></svg></span><div><h4>CI/CD &amp; Testing</h4><p class="sk-note">Build, test, ship</p></div></header>
-      <p class="tags"><span>Git</span><span>Maven</span><span>JFrog</span><span>Jenkins</span><span>GitLab CI</span><span>SonarQube</span><span>JUnit</span><span>Mockito</span><span>Postman</span></p></article>
-    <article class="card sk" style="--c:#1aa6d8"><header><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a4.5 4.5 0 0 1 5 4.3"/></svg></span><div><h4>Ways of Working</h4><p class="sk-note">How I deliver</p></div></header>
-      <p class="tags"><span>Agile (Scrum)</span><span>Low-Level Design</span><span>Architecture &amp; Design Reviews</span><span>Production Support</span><span>Client Support</span><span>Mentoring</span></p></article>
-  </div>
-</section>
+  <section class="s" id="about">
+    <div class="wrap about">
+      <div class="stick">
+        <p class="kicker">About</p>
+        <p class="statement">A backend engineer for SAP BTP. I design the services, the data model and the security behind enterprise apps, and I keep them running in production.</p>
+      </div>
+      <div class="copy">
+        <p class="rv">I'm an SAP CAP (Java) developer based in Bangalore, India, with <b>3.5+ years</b> of experience delivering cloud-native applications on SAP BTP and in production. I work with CAP, the CAP Java SDK and Spring Boot, with strong CDS modeling on SAP HANA Cloud.</p>
+        <p class="rv">I'm the <b>technical point of contact</b> for an Asset Integrity Management platform for Oil &amp; Gas. There I've designed 100+ REST and OData services, secured them with OAuth2, JWT and XSUAA, and integrated them with S/4HANA through the Destination and Connectivity services. I also take part in design reviews and have mentored 10+ junior engineers. I received a <b>Performance Excellence Award</b> for outstanding performance, dedication and valuable contributions to the organization.</p>
+        <p class="rv">I currently lead backend development for AsInt Edge, developing applications on GCP and SAP using Java Spring Boot. On SAP, I build with CAP and CDS. I also handle client support and production management on the SAP stack.</p>
+        <ul class="chips rv" aria-label="Languages and interests"><li>English</li><li>Kannada</li><li>Telugu</li><li>Hindi</li><li>Marathi</li><li>Cricket</li><li>Sketching</li><li>Gaming</li><li>Movies</li></ul>
+        <ul class="edu" id="education" aria-label="Education">
+          <li class="spot rv"><span class="when">Aug 2018 – Jun 2022</span><b>B.Tech, Computer Science</b><span>Dayananda Sagar University, Bangalore</span></li>
+          <li class="spot rv"><span class="when">Jul 2016 – May 2018</span><b>Intermediate (PU)</b><span>Dayananda Sagar PU College, Bangalore</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section id="experience">
-  <h3 class="title">Experience</h3>
-  <div class="timeline">
-    <article class="job">
-      <header>
-        <h4>SAP CAP (Java) / Backend Developer <small>· AsInt, Inc.</small></h4>
-        <span class="date">March 2023 – Present · Bangalore, India</span>
-      </header>
-      <p class="muted">Technical point of contact for an Asset Integrity Management platform (Oil &amp; Gas) on SAP BTP.</p>
-
-      <ul class="own" aria-label="Ownership and scope">
-        <li><i class="bi bi-person-badge" aria-hidden="true"></i><b>Technical ownership</b><span>Technical point of contact for the platform's backend on SAP BTP.</span></li>
-        <li><i class="bi bi-boxes" aria-hidden="true"></i><b>Backend modules</b><span>100+ REST and OData services and 50+ CDS entities across 10 modules.</span></li>
-        <li><i class="bi bi-headset" aria-hidden="true"></i><b>Production</b><span>Client support and production management on the SAP stack.</span></li>
-        <li><i class="bi bi-people" aria-hidden="true"></i><b>Coordination &amp; mentoring</b><span>Design reviews, work with architects and consultants, 10+ juniors mentored.</span></li>
+  <section class="s" id="experience">
+    <div class="wrap">
+      <p class="kicker rv">Experience</p>
+      <h2 class="h2 rv">Where I've been <em class="grad">building.</em></h2>
+      <div class="role rv">
+        <h3>SAP CAP (Java) / Backend Developer <small>AsInt, Inc.</small></h3>
+        <p class="when">Mar 2023 – Present · Bangalore, India</p>
+      </div>
+      <p class="sum rv">Technical point of contact for an Asset Integrity Management platform (Oil &amp; Gas) on SAP BTP.</p>
+      <ul class="facts" aria-label="Ownership and scope">
+        <li class="spot rv"><i class="bi bi-person-badge"></i><b>Technical ownership</b>Technical point of contact for the platform's backend on SAP BTP.</li>
+        <li class="spot rv"><i class="bi bi-boxes"></i><b>Backend modules</b>100+ REST and OData services and 50+ CDS entities across 10 modules.</li>
+        <li class="spot rv"><i class="bi bi-headset"></i><b>Production</b>Client support and production management on the SAP stack.</li>
+        <li class="spot rv"><i class="bi bi-people"></i><b>Coordination &amp; mentoring</b>Design reviews, work with architects and consultants, 10+ juniors mentored.</li>
       </ul>
-
-      <div class="jgroups">
-        <section class="jg"><h5><i class="bi bi-flag" aria-hidden="true"></i> Ownership</h5><ul>
-          <li><b>Currently leading backend development for AsInt Edge</b>: developing applications on <b>GCP</b> and <b>SAP</b> using <b>Java Spring Boot</b>. On SAP, building with <b>CAP</b> and <b>CDS</b>.</li>
-          <li>Provide <b>client support</b> and handle <b>production management</b> on the <b>SAP stack</b>.</li>
-        </ul></section>
-        <section class="jg"><h5><i class="bi bi-cloud" aria-hidden="true"></i> SAP BTP &amp; CAP</h5><ul>
-          <li>Built and maintained cloud-native apps with <b>SAP CAP (Java)</b> and the CAP Java SDK on SAP BTP. Designed <b>100+ REST APIs and OData services</b> and modeled <b>50+ CDS entities</b> across <b>10 modules</b>.</li>
-          <li>Developed business logic in Java / Spring Boot. Created CDS artifacts and database models on <b>SAP HANA Cloud</b>.</li>
-        </ul></section>
-        <section class="jg"><h5><i class="bi bi-shield-lock" aria-hidden="true"></i> Integration &amp; security</h5><ul>
-          <li>Integrated <b>S/4HANA</b> for data exchange, and third-party and on-premise systems via <b>Destination</b> and <b>Connectivity</b> services.</li>
-          <li>Configured auth with <b>OAuth2, JWT, XSUAA</b> and SAP Identity Services.</li>
-          <li>Implemented scheduled processing (Job Scheduler) and event-driven messaging (Event Mesh, Kafka, <b>hundreds of events/day</b>).</li>
-        </ul></section>
-        <section class="jg"><h5><i class="bi bi-speedometer2" aria-hidden="true"></i> Performance &amp; reliability</h5><ul>
-          <li>Tuned HANA Cloud models and HANA SQL queries, <b>cutting response time by ~50%</b>.</li>
-          <li>Built a modular <b>calculation framework</b> (TMIN, MAWP, corrosion rate, FFS, RBI) using CompletableFuture / ExecutorService, with transactional boundaries and idempotent validation for concurrency-safe consistency.</li>
-        </ul></section>
-        <section class="jg"><h5><i class="bi bi-rocket-takeoff" aria-hidden="true"></i> Delivery &amp; team</h5><ul>
-          <li>Deployed and managed apps on <b>Cloud Foundry</b>. Ran CI/CD (Maven, JFrog, Jenkins / GitLab CI) with unit testing and code reviews.</li>
-          <li>Contributed to design reviews and <b>mentored 10+ junior engineers</b>.</li>
-        </ul></section>
+      <div class="xp">
+        <div class="tabs" role="tablist" aria-label="Areas of work" aria-orientation="vertical">
+          <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><i class="bi bi-flag"></i> Ownership</button>
+          <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false"><i class="bi bi-cloud"></i> SAP BTP &amp; CAP</button>
+          <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false"><i class="bi bi-shield-lock"></i> Integration &amp; security</button>
+          <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false"><i class="bi bi-speedometer2"></i> Performance &amp; reliability</button>
+          <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false"><i class="bi bi-rocket-takeoff"></i> Delivery &amp; team</button>
+        </div>
+        <div class="xp-panels spot">
+          <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1"><h4>Ownership</h4><ul>
+            <li><b>Currently leading backend development for AsInt Edge</b>: developing applications on <b>GCP</b> and <b>SAP</b> using <b>Java Spring Boot</b>. On SAP, building with <b>CAP</b> and <b>CDS</b>.</li>
+            <li>Provide <b>client support</b> and handle <b>production management</b> on the <b>SAP stack</b>.</li></ul></div>
+          <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden><h4>SAP BTP &amp; CAP</h4><ul>
+            <li>Built and maintained cloud-native apps with <b>SAP CAP (Java)</b> and the CAP Java SDK on SAP BTP. Designed <b>100+ REST APIs and OData services</b> and modeled <b>50+ CDS entities</b> across <b>10 modules</b>.</li>
+            <li>Developed business logic in Java / Spring Boot. Created CDS artifacts and database models on <b>SAP HANA Cloud</b>.</li></ul></div>
+          <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden><h4>Integration &amp; security</h4><ul>
+            <li>Integrated <b>S/4HANA</b> for data exchange, and third-party and on-premise systems via <b>Destination</b> and <b>Connectivity</b> services.</li>
+            <li>Configured auth with <b>OAuth2, JWT, XSUAA</b> and SAP Identity Services.</li>
+            <li>Implemented scheduled processing (Job Scheduler) and event-driven messaging (Event Mesh, Kafka, <b>hundreds of events/day</b>).</li></ul></div>
+          <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden><h4>Performance &amp; reliability</h4><ul>
+            <li>Tuned HANA Cloud models and HANA SQL queries, <b>cutting response time by ~50%</b>.</li>
+            <li>Built a modular <b>calculation framework</b> (TMIN, MAWP, corrosion rate, FFS, RBI) using CompletableFuture / ExecutorService, with transactional boundaries and idempotent validation for concurrency-safe consistency.</li></ul></div>
+          <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden><h4>Delivery &amp; team</h4><ul>
+            <li>Deployed and managed apps on <b>Cloud Foundry</b>. Ran CI/CD (Maven, JFrog, Jenkins / GitLab CI) with unit testing and code reviews.</li>
+            <li>Contributed to design reviews and <b>mentored 10+ junior engineers</b>.</li></ul></div>
+        </div>
       </div>
-    </article>
-  </div>
-</section>
-
-<section id="projects">
-  <h3 class="title">Key Projects</h3>
-  <div class="grid projects">
-    <article class="card current" id="edge">
-      <img class="banner" src="img/banner-edge.svg" alt="" loading="lazy">
-      <div class="body">
-        <h4>AsInt Edge Apps <span class="pill live">Current</span></h4>
-        <p class="muted">Employer product · Backend lead</p>
-        <p>I lead backend development for AsInt Edge, developing applications on GCP and SAP using Java Spring Boot. On SAP, I build with CAP and CDS.</p>
-        <p class="tags"><span>Java</span><span>Spring Boot</span><span>GCP</span><span>SAP</span><span>CAP</span><span>CDS</span></p>
-        <a class="btn" href="https://edge.asint.net" target="_blank" rel="noopener noreferrer">About AsInt Edge <i class="bi bi-box-arrow-up-right"></i></a>
-      </div>
-    </article>
-    <article class="card featured" id="sample">
-      <img class="banner" src="img/banner-cap.svg" alt="" loading="lazy">
-      <h4>CAP Store: a sample CAP Java app <span class="pill">Interactive</span></h4>
-      <p class="muted">Built for this portfolio</p>
-      <p>A small full-stack online store: a UI5 storefront on a CAP Java service, with stock checks and volume discounts. Place an order and call the OData API live. Free to reuse.</p>
-      <p class="tags"><span>UI5</span><span>CAP Java</span><span>CDS</span><span>OData V4</span><span>XSUAA</span><span>JUnit</span></p>
-      <span class="btn primary" aria-hidden="true">Open the project →</span>
-      <a class="stretch" href="project.html#ui" aria-label="Open the CAP Store sample project"></a>
-    </article>
-    <article class="card">
-      <img class="banner" src="img/banner-aim.svg" alt="" loading="lazy">
-      <h4>Asset Integrity Management System</h4>
-      <p class="muted">Oil &amp; Gas · EAM / APM platform</p>
-      <p>100+ CAP OData/REST services bridging S/4HANA and HANA Cloud, secured with XSUAA. Scalable workflows built on Event Mesh, Kafka and CompletableFuture.</p>
-      <p class="tags"><span>CAP (Java)</span><span>CDS</span><span>OData</span><span>HANA Cloud</span><span>BTP</span><span>Cloud Foundry</span><span>XSUAA</span><span>Event Mesh</span><span>Kafka</span></p>
-    </article>
-    <article class="card">
-      <img class="banner" src="img/banner-reco.svg" alt="" loading="lazy">
-      <h4>Asset Maintenance Recommendation System</h4>
-      <p class="muted">Rule-based recommendation engine</p>
-      <p>Extensible engine with modular services and async processing that decouples computation from request–response flows.</p>
-      <p class="tags"><span>Java</span><span>Spring Boot</span><span>CAP</span><span>PostgreSQL</span><span>JPA/Hibernate</span><span>Kafka</span></p>
-    </article>
-    <article class="card">
-      <img class="banner" src="img/banner-spend.svg" alt="" loading="lazy">
-      <h4>Maintenance Spend Planning System</h4>
-      <p class="muted">Budget planning workflows</p>
-      <p>Budget-planning workflows with data persistence, validation rules, and calculation components for aggregation, adjustments and approval-stage validations.</p>
-      <p class="tags"><span>Java</span><span>Spring Boot</span><span>SAP CAP</span><span>PostgreSQL</span><span>JPA/Hibernate</span></p>
-    </article>
-  </div>
-</section>
-
-<section id="achievements">
-  <h3 class="title">Achievements</h3>
-  <div class="ach-grid">
-    <article class="ach" style="--c:#e8a30a">
-      <span class="ach-ico"><i class="bi bi-award-fill"></i></span>
-      <p class="ach-label">Recognition</p>
-      <h4>Performance Excellence Award</h4>
-      <p class="ach-text">Awarded for outstanding performance, dedication and valuable contributions to the organization.</p>
-    </article>
-    <article class="ach" style="--c:#0a6ed1">
-      <span class="ach-ico"><i class="bi bi-stars"></i></span>
-      <p class="ach-label">Leadership</p>
-      <h4>Leading the AsInt Edge backend</h4>
-      <p class="ach-text">Developing applications on GCP and SAP using Java Spring Boot, with CAP and CDS on the SAP side.</p>
-    </article>
-    <article class="ach" style="--c:#7c5cff">
-      <span class="ach-ico"><i class="bi bi-diagram-3-fill"></i></span>
-      <p class="ach-label">Collaboration</p>
-      <h4>Working across teams</h4>
-      <p class="ach-text">Delivering with architects, functional consultants and business stakeholders.</p>
-    </article>
-    <article class="ach" style="--c:#d6409f">
-      <span class="ach-ico"><i class="bi bi-megaphone-fill"></i></span>
-      <p class="ach-label">Outreach</p>
-      <h4>Marketing the apps we build</h4>
-      <p class="ach-text">Helping promote the apps, so users and clients know what they can do.</p>
-    </article>
-    <article class="ach" style="--c:#2fa84f">
-      <span class="ach-ico"><i class="bi bi-headset"></i></span>
-      <p class="ach-label">Ownership</p>
-      <h4>Client support &amp; production management</h4>
-      <p class="ach-text">Supporting clients and managing production on the SAP stack.</p>
-    </article>
-    <article class="ach" style="--c:#1aa6d8">
-      <span class="ach-ico"><i class="bi bi-mortarboard-fill"></i></span>
-      <p class="ach-label">Mentoring</p>
-      <h4>Mentored 10+ junior engineers</h4>
-      <p class="ach-text">Helped junior engineers grow, alongside code and design reviews.</p>
-    </article>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact">
-    <div class="c-left">
-      <p class="eyebrow">Contact</p>
-      <h3 class="c-title">Let's build something<br><em>great.</em></h3>
-      <p class="lead">Send a message, or reach me directly. I reply fast.</p>
-      <ul class="c-icons" aria-label="Ways to reach me">
-        <li><a class="c-ico" href="mailto:jujarayvinay1210@gmail.com" data-tip="Email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a></li>
-        <li><a class="c-ico wa" href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" data-tip="WhatsApp" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
-        <li><a class="c-ico" href="tel:+918792437224" data-tip="Call" aria-label="Call"><i class="bi bi-telephone-fill"></i></a></li>
-        <li><a class="c-ico li" href="https://linkedin.com/in/vinay-j-a44375179" target="_blank" rel="noopener" data-tip="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
-        <li><a class="c-ico gh" href="https://github.com/vinay72368" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
-      </ul>
-      <div class="c-actions">
-        <a class="btn primary" href="VINAY_SAP_CAP_JAVA_RESUME.pdf" download><i class="bi bi-download"></i> Download résumé</a>
-        <button class="btn" type="button" id="copy-email" data-email="jujarayvinay1210@gmail.com"><i class="bi bi-clipboard"></i> <span>Copy email</span></button>
-      </div>
-      <a class="c-chat" href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener">Prefer a quick chat? Message me on WhatsApp <i class="bi bi-arrow-right"></i></a>
-      <p class="c-loc"><i class="bi bi-geo-alt"></i> Bangalore, India</p>
     </div>
-    <form class="c-form" id="contact-form" autocomplete="on">
-      <label>Your name<input name="name" type="text" required autocomplete="name" placeholder="Jane Doe"></label>
-      <label>Your email<input name="email" type="email" required autocomplete="email" placeholder="jane@company.com"></label>
-      <label>Message<textarea name="message" rows="5" required placeholder="Tell me about the role or project"></textarea></label>
-      <button class="btn primary wide" type="submit"><i class="bi bi-send"></i> Send message</button>
-      <p class="c-note">Sending opens your email app with the message ready to go.</p>
-    </form>
-  </div>
-</section>
+  </section>
 
+  <section class="s" id="skills">
+    <div class="wrap">
+      <p class="kicker rv">Technical skills</p>
+      <h2 class="h2 rv">The stack I <em class="grad">work in.</em></h2>
+      <div class="bento">
+        <article class="sk big spot rv" style="--c:#0a6ed1"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5H7z"/></svg></span><div><h3>SAP BTP &amp; CAP</h3><p class="note">Core, used daily</p></div></div>
+          <p class="tags"><span>SAP BTP</span><span>CAP</span><span>CAP Java SDK</span><span>CDS</span><span>OData</span><span>CDS database modeling</span><span>S/4HANA integration</span></p></article>
+        <article class="sk wide spot rv" style="--c:#e8710a"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 5-3 14"/></svg></span><div><h3>Backend Engineering</h3><p class="note">Java services</p></div></div>
+          <p class="tags"><span>Java 8/11/21</span><span>Spring Boot</span><span>Microservices</span><span>REST APIs</span><span>Spring Data JPA / Hibernate</span><span>Apache Kafka</span><span>CompletableFuture / ExecutorService</span><span>SQL</span><span>JavaScript (ES6+)</span></p></article>
+        <article class="sk wide spot rv" style="--c:#0e9f8e"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8 7.5 9.5 4.3-1.5 7.5-5 7.5-9.5V6L12 3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><div><h3>Security &amp; Integration</h3><p class="note">Secure, connected services</p></div></div>
+          <p class="tags"><span>XSUAA</span><span>OAuth2</span><span>JWT</span><span>SAP Identity Services</span><span>Spring Security</span><span>Destination</span><span>Connectivity</span><span>Event Mesh</span><span>Job Scheduler</span></p></article>
+        <article class="sk spot rv" style="--c:#d6409f"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg></span><div><h3>Database</h3><p class="note">Modeling, tuning</p></div></div>
+          <p class="tags"><span>SAP HANA Cloud</span><span>HANA SQL</span><span>HANA query tuning</span><span>PostgreSQL</span></p></article>
+        <article class="sk spot rv" style="--c:#7c5cff"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5H7z"/></svg></span><div><h3>Cloud &amp; DevOps</h3><p class="note">Where apps run</p></div></div>
+          <p class="tags"><span>Cloud Foundry</span><span>Docker</span><span>GCP</span></p></article>
+        <article class="sk wide spot rv" style="--c:#2fa84f"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 15.5"/><path d="M4 20v-4.5h4.5"/><path d="m9.5 12 2 2 3.5-4"/></svg></span><div><h3>CI/CD &amp; Testing</h3><p class="note">Build, test, ship</p></div></div>
+          <p class="tags"><span>Git</span><span>Maven</span><span>JFrog</span><span>Jenkins</span><span>GitLab CI</span><span>SonarQube</span><span>JUnit</span><span>Mockito</span><span>Postman</span></p></article>
+        <article class="sk wide spot rv" style="--c:#1aa6d8"><div class="top"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a4.5 4.5 0 0 1 5 4.3"/></svg></span><div><h3>Ways of Working</h3><p class="note">How I deliver</p></div></div>
+          <p class="tags"><span>Agile (Scrum)</span><span>Low-Level Design</span><span>Architecture &amp; Design Reviews</span><span>Production Support</span><span>Client Support</span><span>Mentoring</span></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="projects">
+    <div class="wrap">
+      <p class="kicker rv">Key projects</p>
+      <h2 class="h2 rv">Things I've <em class="grad">shipped.</em></h2>
+      <div class="pstack">
+        <article class="pcard" id="edge" style="--i:0">
+          <div class="pmedia"><img src="img/banner-edge.svg" alt="" width="400" height="160" loading="lazy" decoding="async"></div>
+          <div class="pbody">
+            <p class="kind">Employer product · Backend lead</p>
+            <h3>AsInt Edge Apps <span class="pill">Current</span></h3>
+            <p>I lead backend development for AsInt Edge, developing applications on GCP and SAP using Java Spring Boot. On SAP, I build with CAP and CDS.</p>
+            <p class="tags"><span>Java</span><span>Spring Boot</span><span>GCP</span><span>SAP</span><span>CAP</span><span>CDS</span></p>
+            <a class="go" href="https://edge.asint.net" target="_blank" rel="noopener noreferrer">About AsInt Edge <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </article>
+        <article class="pcard" id="sample" style="--i:1">
+          <div class="pmedia"><img src="img/banner-cap.svg" alt="" width="400" height="160" loading="lazy" decoding="async"></div>
+          <div class="pbody">
+            <p class="kind">Built for this portfolio</p>
+            <h3>CAP Store: a sample CAP Java app <span class="pill">Interactive</span></h3>
+            <p>A small full-stack online store: a UI5 storefront on a CAP Java service, with stock checks and volume discounts. Place an order and call the OData API live. Free to reuse.</p>
+            <p class="tags"><span>UI5</span><span>CAP Java</span><span>CDS</span><span>OData V4</span><span>XSUAA</span><span>JUnit</span></p>
+            <span class="go" aria-hidden="true">Open the project <i class="bi bi-arrow-right"></i></span>
+          </div>
+          <a class="stretch" href="project.html#ui" aria-label="Open the CAP Store sample project"></a>
+        </article>
+        <article class="pcard" style="--i:2">
+          <div class="pmedia"><img src="img/banner-aim.svg" alt="" width="400" height="160" loading="lazy" decoding="async"></div>
+          <div class="pbody">
+            <p class="kind">Oil &amp; Gas · EAM / APM platform</p>
+            <h3>Asset Integrity Management System</h3>
+            <p>100+ CAP OData/REST services bridging S/4HANA and HANA Cloud, secured with XSUAA. Scalable workflows built on Event Mesh, Kafka and CompletableFuture.</p>
+            <p class="tags"><span>CAP (Java)</span><span>CDS</span><span>OData</span><span>HANA Cloud</span><span>BTP</span><span>Cloud Foundry</span><span>XSUAA</span><span>Event Mesh</span><span>Kafka</span></p>
+          </div>
+        </article>
+        <article class="pcard" style="--i:3">
+          <div class="pmedia"><img src="img/banner-reco.svg" alt="" width="400" height="160" loading="lazy" decoding="async"></div>
+          <div class="pbody">
+            <p class="kind">Rule-based recommendation engine</p>
+            <h3>Asset Maintenance Recommendation System</h3>
+            <p>Extensible engine with modular services and async processing that decouples computation from request–response flows.</p>
+            <p class="tags"><span>Java</span><span>Spring Boot</span><span>CAP</span><span>PostgreSQL</span><span>JPA/Hibernate</span><span>Kafka</span></p>
+          </div>
+        </article>
+        <article class="pcard" style="--i:4">
+          <div class="pmedia"><img src="img/banner-spend.svg" alt="" width="400" height="160" loading="lazy" decoding="async"></div>
+          <div class="pbody">
+            <p class="kind">Budget planning workflows</p>
+            <h3>Maintenance Spend Planning System</h3>
+            <p>Budget-planning workflows with data persistence, validation rules, and calculation components for aggregation, adjustments and approval-stage validations.</p>
+            <p class="tags"><span>Java</span><span>Spring Boot</span><span>SAP CAP</span><span>PostgreSQL</span><span>JPA/Hibernate</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="achievements">
+    <div class="wrap">
+      <p class="kicker rv">Achievements</p>
+      <h2 class="h2 rv">Recognition &amp; <em class="grad">ownership.</em></h2>
+      <ul class="ach">
+        <li class="spot rv cert-card" style="--c:#e8a30a">
+          <button type="button" class="cert-thumb" data-cert aria-label="View the Performance Excellence Award certificate">
+            <img src="img/performance-excellence-certificate.jpg" alt="Performance Excellence Award certificate presented to Vinay J" width="1600" height="1132" loading="lazy" decoding="async">
+            <span><i class="bi bi-arrows-fullscreen"></i> View certificate</span>
+          </button>
+          <div class="cert-text">
+            <i class="bi bi-award-fill"></i>
+            <b>Performance Excellence Award</b>
+            <span>Awarded for outstanding performance, dedication and valuable contributions to the organization.</span>
+            <div class="cert-actions">
+              <button type="button" class="btn primary" data-cert><i class="bi bi-patch-check"></i> View certificate</button>
+              <a class="btn" href="img/performance-excellence-certificate.pdf" download><i class="bi bi-download"></i> PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="spot rv" style="--c:#0a6ed1"><i class="bi bi-stars"></i><b>Leading the AsInt Edge backend</b><span>Developing applications on GCP and SAP using Java Spring Boot, with CAP and CDS on the SAP side.</span></li>
+        <li class="spot rv" style="--c:#7c5cff"><i class="bi bi-diagram-3-fill"></i><b>Working across teams</b><span>Delivering with architects, functional consultants and business stakeholders.</span></li>
+        <li class="spot rv" style="--c:#d6409f"><i class="bi bi-megaphone-fill"></i><b>Marketing the apps we build</b><span>Helping promote the apps, so users and clients know what they can do.</span></li>
+        <li class="spot rv" style="--c:#2fa84f"><i class="bi bi-headset"></i><b>Client support &amp; production management</b><span>Supporting clients and managing production on the SAP stack.</span></li>
+        <li class="spot rv" style="--c:#1aa6d8"><i class="bi bi-mortarboard-fill"></i><b>Mentored 10+ junior engineers</b><span>Helped junior engineers grow, alongside code and design reviews.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="s" id="contact">
+    <div class="wrap">
+      <p class="kicker rv">Contact</p>
+      <h2 class="cta-big rv">Let's build something <em class="grad">great.</em>
+      </h2>
+      <div class="contact rv">
+        <div class="c-left">
+          <p class="c-lead">Send a message, or reach me directly. I reply fast.</p>
+          <ul class="ic-row" aria-label="Ways to reach me">
+            <li><a href="mailto:jujarayvinay1210@gmail.com" data-tip="Email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a></li>
+            <li><a href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" data-tip="WhatsApp" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
+            <li><a href="tel:+918792437224" data-tip="Call" aria-label="Call"><i class="bi bi-telephone-fill"></i></a></li>
+            <li><a href="https://linkedin.com/in/vinay-j-a44375179" target="_blank" rel="noopener" data-tip="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+            <li><a href="https://github.com/vinay72368" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+          </ul>
+          <div class="c-actions">
+            <a class="btn primary" href="VINAY_SAP_CAP_JAVA_RESUME.pdf" download><i class="bi bi-download"></i> Download résumé</a>
+            <button class="btn" type="button" id="copy-email" data-email="jujarayvinay1210@gmail.com"><i class="bi bi-clipboard"></i> <span>Copy email</span></button>
+          </div>
+          <a class="c-chat" href="https://wa.me/918792437224?text=Hi%20Vinay%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener">Prefer a quick chat? Message me on WhatsApp <i class="bi bi-arrow-right"></i></a>
+          <p class="c-loc"><i class="bi bi-geo-alt"></i> Bangalore, India</p>
+        </div>
+        <form class="form" id="contact-form" autocomplete="on">
+          <label>Your name<input name="name" type="text" required autocomplete="name" placeholder="Jane Doe"></label>
+          <label>Your email<input name="email" type="email" required autocomplete="email" placeholder="jane@company.com"></label>
+          <label>Message<textarea name="message" rows="5" required placeholder="Tell me about the role or project"></textarea></label>
+          <button class="btn primary" type="submit"><i class="bi bi-send"></i> Send message</button>
+          <p class="note">Sending opens your email app with the message ready to go.</p>
+        </form>
+      </div>
+      <footer><span>© <span id="year"></span> Vinay J · SAP CAP (Java) Developer · Bangalore</span><a href="#top">Back to top ↑</a></footer>
+    </div>
+  </section>
 </main>
 
-<footer><span>© <span id="year"></span> Vinay J · SAP CAP (Java) Developer</span><a href="#top">Back to top ↑</a></footer>
-<script src="script.js"></script>
+<dialog class="lb" id="lb" aria-label="Performance Excellence Award certificate">
+  <button type="button" class="lb-x" data-lb-close aria-label="Close"><i class="bi bi-x-lg"></i></button>
+  <img src="img/performance-excellence-certificate.jpg" alt="Performance Excellence Award certificate presented to Vinay J" width="1600" height="1132">
+  <p><span>Performance Excellence Award · presented by AsInt, Inc.</span><a href="img/performance-excellence-certificate.pdf" download>Download PDF</a></p>
+</dialog>
+
+<script src="app.js"></script>
 <script>
 window.AVATAR_TOUR = [
-  { sel: '.hero',        text: "Hi! I'm Vinay's guide. Let me show you around his portfolio. Vinay is an SAP CAP Java developer based in Bangalore." },
-  { sel: '#about',      text: "Over three and a half years on SAP BTP and in production. He is the technical point of contact for an Asset Integrity platform in Oil and Gas, and has mentored more than ten junior engineers. He also received a Performance Excellence Award for outstanding performance, dedication and valuable contributions to the organization." },
-  { sel: '#education',  text: "He holds a B.Tech in Computer Science from Dayananda Sagar University in Bangalore." },
-  { sel: '#skills',     text: "His stack: CAP and the CAP Java SDK, CDS, OData, Spring Boot, SAP HANA Cloud, XSUAA, Event Mesh, Kafka, and CI/CD with Jenkins and GitLab." },
-  { sel: '#experience', text: "He currently leads backend development for AsInt Edge, developing applications on GCP and SAP using Java Spring Boot. On SAP he builds with CAP and CDS. He also handles client support and production management on the SAP stack. Earlier at AsInt, he designed over a hundred services and cut HANA response times by about fifty percent." },
-  { sel: '#projects',   text: "Here are his projects. The first is his current work, leading backend development for AsInt Edge on Spring Boot. Next is a sample CAP Java store you can explore and call live. Try it after the tour." },
-  { sel: '#achievements', text: "Some highlights: a Performance Excellence Award for outstanding performance and dedication, leading the AsInt Edge backend, working across teams, helping market the apps he builds, and handling client support and production management on the SAP stack." },
-  { sel: '#contact',    text: "And if you'd like to work together, this is the place. Thanks for visiting!" },
+  { sel: '.hero',         text: "Hi! I'm Vinay's guide. Let me show you around his portfolio. Vinay is an SAP CAP Java developer based in Bangalore." },
+  { sel: '#about',        text: "Over three and a half years on SAP BTP and in production. He is the technical point of contact for an Asset Integrity platform in Oil and Gas, and has mentored more than ten junior engineers. He also received a Performance Excellence Award." },
+  { sel: '#experience',   text: "He currently leads backend development for AsInt Edge on GCP and SAP, handles client support and production management on the SAP stack, and earlier designed over a hundred services and cut HANA response times by about fifty percent." },
+  { sel: '#skills',       text: "His stack: CAP and the CAP Java SDK, CDS, OData, Spring Boot, SAP HANA Cloud, XSUAA, Event Mesh, Kafka, and CI/CD with Jenkins and GitLab." },
+  { sel: '#projects',     text: "Here are his projects. The first is his current work on AsInt Edge. Next is a sample CAP Java store you can explore and call live. Try it after the tour." },
+  { sel: '#achievements', text: "Highlights: a Performance Excellence Award, leading the AsInt Edge backend, working across teams, and client support and production management on the SAP stack." },
+  { sel: '#contact',      text: "And if you'd like to work together, this is the place. Thanks for visiting!" },
 ];
 </script>
 <script src="avatar.js"></script>
