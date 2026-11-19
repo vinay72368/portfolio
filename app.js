@@ -29,11 +29,11 @@ const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
 })();
 
-// ---- header Résumé button: hidden on the landing screen, shown everywhere else ----
+// ---- header Résumé button: hidden on the landing screen and on the contact section (both already offer the download) ----
 (() => {
-  const hero = $('.hero'), btn = $('#nav-resume'); if (!hero || !btn) return;
+  const hero = $('.hero'), contact = $('#contact'), btn = $('#nav-resume'); if (!hero || !btn) return;
   let raf = 0;
-  const upd = () => { raf = 0; const at = scrollY < hero.offsetHeight * 0.55; document.body.classList.toggle('at-top', at); btn.inert = at; };
+  const upd = () => { raf = 0; const at = scrollY < hero.offsetHeight * 0.55 || (contact && contact.getBoundingClientRect().top < innerHeight * 0.55); document.body.classList.toggle('at-top', at); btn.inert = at; };
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true }); addEventListener('resize', upd); upd();
 })();
 
